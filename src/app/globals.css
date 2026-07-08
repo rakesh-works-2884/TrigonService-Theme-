@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-jakarta);
+
+  --color-navy: #0b3d6d;
+  --color-navy-dark: #082c4f;
+  --color-navy-light: #14508c;
+  --color-cyan: #0ea5e9;
+  --color-cyan-light: #22d3ee;
+  --color-warmgray: #f3f4f6;
+  --color-warmgray-dark: #4b5563;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jakarta), Arial, Helvetica, sans-serif;
+}
+
+.gradient-brand {
+  background-image: linear-gradient(135deg, var(--color-navy) 0%, var(--color-cyan) 65%, var(--color-cyan-light) 100%);
+}
+
+.gradient-text {
+  background-image: linear-gradient(90deg, var(--color-cyan) 0%, var(--color-cyan-light) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0) rotate(var(--float-rotate, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--float-rotate, 0deg)); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(12px, -18px) scale(1.05); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 9s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
+
+/* Layered 3D card effect: perspective wrapper + tilted photo with a hover reset */
+.perspective-1000 {
+  perspective: 1200px;
+}
+
+.tilt-card {
+  transform: rotate3d(0.3, -1, 0, 6deg) scale(1);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+}
+
+.tilt-card:hover {
+  transform: rotate3d(0, 0, 0, 0deg) scale(1.02);
+}
+
+.tilt-card-left {
+  transform: rotate3d(-0.3, 1, 0, 6deg) scale(1);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+}
+
+.tilt-card-left:hover {
+  transform: rotate3d(0, 0, 0, 0deg) scale(1.02);
+}
+
+/* Scroll-reveal transition, toggled by the FadeIn client component */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle 3D lift for grid cards on hover */
+.hover-tilt {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+
+.hover-tilt:hover {
+  transform: perspective(800px) rotateX(4deg) rotateY(-4deg) translateY(-6px);
+}

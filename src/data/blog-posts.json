@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "gst-return-filing-deadlines-2026",
+    "title": "GST Return Filing Deadlines Every Business Should Track in 2026",
+    "category": "GST & Tax Filing Tips",
+    "excerpt": "A quick reference to the monthly, quarterly, and annual GST filing due dates and how to avoid late fees.",
+    "date": "2026-06-18",
+    "image": "https://images.pexels.com/photos/6927334/pexels-photo-6927334.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "body": [
+      "Missing a GST return deadline is one of the most common and most avoidable compliance failures we see, and it carries real cost: late fees, interest on outstanding tax, and in some cases, a block on filing subsequent returns or claiming input tax credit.",
+      "Most businesses need to track GSTR-1 (outward supplies), GSTR-3B (summary return and tax payment), and where applicable, the annual return GSTR-9. The exact frequency — monthly or quarterly under the QRMP scheme — depends on your turnover and the scheme you've opted into.",
+      "The safest approach is to maintain a compliance calendar mapped to your specific GSTIN(s) rather than relying on memory. Trigon Services tracks these deadlines for every client and files well ahead of due dates to leave room for corrections."
+    ]
+  },
+  {
+    "slug": "startup-compliance-checklist-first-year",
+    "title": "The First-Year Compliance Checklist Every Startup Needs",
+    "category": "Startup Compliance Checklist",
+    "excerpt": "From incorporation to your first ROC filing — the compliance milestones founders miss most often.",
+    "date": "2026-05-27",
+    "image": "https://images.pexels.com/photos/8293774/pexels-photo-8293774.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "body": [
+      "The first year after incorporation is when most startups fall behind on compliance — not out of negligence, but because nobody told them these obligations existed until a penalty notice arrived.",
+      "At minimum, expect to handle: opening a current bank account, GST registration (if applicable), your first ROC annual filing, DIR-3 KYC for directors, and Startup India recognition if you want access to tax and funding benefits.",
+      "Building a simple compliance calendar in month one saves founders from scrambling later. We set this up for every startup client as part of onboarding."
+    ]
+  },
+  {
+    "slug": "udyam-registration-benefits-explained",
+    "title": "Udyam (MSME) Registration: Benefits Most Businesses Overlook",
+    "category": "Latest Government Policy Changes",
+    "excerpt": "Beyond subsidies — how MSME registration protects payment timelines and improves loan eligibility.",
+    "date": "2026-05-05",
+    "image": "https://images.pexels.com/photos/34674788/pexels-photo-34674788.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "body": [
+      "Udyam registration is often treated as a formality, but it unlocks protections and benefits that materially affect cash flow and access to capital.",
+      "Registered MSMEs are legally entitled to payment within 45 days from buyers, with interest accruing automatically on delayed payments — a protection many small businesses don't realise they can enforce.",
+      "Beyond that, Udyam registration improves eligibility for priority-sector lending, collateral-free loan schemes, and government tender participation. It takes minutes to apply for and has no ongoing cost, making it one of the highest-leverage registrations a small business can complete."
+    ]
+  }
+]

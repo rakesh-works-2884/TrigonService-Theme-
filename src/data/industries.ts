@@ -1,0 +1,197 @@
+import { pexelsPhoto } from "@/lib/images";
+
+export type Industry = {
+  slug: string;
+  title: string;
+  description: string;
+  keyServices: string[];
+  image: string;
+  imageAlt: string;
+  stats: { value: string; label: string }[];
+  challenges: string[];
+  testimonial?: { quote: string; attribution: string };
+};
+
+export const challengesImage = pexelsPhoto(8293774, 1200);
+export const challengesImageAlt = "Compliance checklist being reviewed with colored document folders";
+
+export const industries: Industry[] = [
+  {
+    slug: "startups-entrepreneurs",
+    title: "Startups & Entrepreneurs",
+    description:
+      "From first incorporation to Startup India recognition, we help founders build a compliant foundation without slowing down momentum.",
+    keyServices: ["Business Registration & Setup", "Financial & Advisory Services", "Intellectual Property (IPR)"],
+    image: pexelsPhoto(19747906),
+    imageAlt: "Startup founder working at a desk with a laptop",
+    stats: [
+      { value: "7-15", label: "Days to Incorporate" },
+      { value: "100%", label: "Startup India Filing Support" },
+      { value: "0", label: "Missed Founder IP Filings" },
+    ],
+    challenges: [
+      "Choosing the wrong legal structure early, leading to costly conversions later",
+      "Missing Startup India recognition deadlines and the tax benefits that come with it",
+      "Founder equity, vesting, and IP ownership left undocumented from day one",
+      "No compliance calendar in place before the first funding round due diligence",
+    ],
+    testimonial: {
+      quote:
+        "Trigon Services is a lifesaver for any founder. They set up our company, handled all legal documentation, and continue to manage our compliance flawlessly.",
+      attribution: "Founder, SaaS Startup",
+    },
+  },
+  {
+    slug: "it-technology",
+    title: "IT & Technology Companies",
+    description:
+      "Software and IT service companies rely on us for payroll compliance, ISO 27001 readiness, and cross-border contracting support.",
+    keyServices: ["Labour Law Compliance", "Certifications", "Tax Registration & Filing"],
+    image: pexelsPhoto(3861951),
+    imageAlt: "Software engineer coding on a computer",
+    stats: [
+      { value: "45+", label: "IT Clients Supported" },
+      { value: "100%", label: "Payroll Filing Accuracy" },
+      { value: "15-45", label: "Days for ISO Readiness" },
+    ],
+    challenges: [
+      "ISO 27001 and data-security certification gaps blocking enterprise deals",
+      "Contractor vs. employee misclassification exposing the company to labour law risk",
+      "Cross-border client contracts drafted without proper FEMA or tax structuring",
+      "ESOP and payroll compliance falling behind as headcount scales quickly",
+    ],
+    testimonial: {
+      quote:
+        "Thanks to Trigon, our tax and payroll processes are fully streamlined. Their team is professional, responsive, and truly reliable.",
+      attribution: "HR Head, IT Company",
+    },
+  },
+  {
+    slug: "manufacturing-supply-chain",
+    title: "Manufacturing & Supply Chain",
+    description:
+      "Factory licensing, pollution control clearances, labour law, and BIS/ISI certifications for plants and production units.",
+    keyServices: ["Government Business Licenses", "Labour Law Compliance", "Certifications"],
+    image: pexelsPhoto(31030928),
+    imageAlt: "Factory worker in a manufacturing facility",
+    stats: [
+      { value: "9", label: "License Types Managed" },
+      { value: "Pan-India", label: "Plant Coverage" },
+      { value: "0", label: "Missed Renewal Deadlines" },
+    ],
+    challenges: [
+      "Factory license and pollution control clearance renewals slipping past deadlines",
+      "BIS/ISI certification gaps blocking large B2B and export contracts",
+      "Contract labour compliance across multiple plant locations",
+      "Minimum wage and welfare fund filings falling out of sync across states",
+    ],
+    testimonial: {
+      quote: "Compliance is no longer a headache for us. Trigon ensures we are always audit-ready.",
+      attribution: "COO, Manufacturing Firm",
+    },
+  },
+  {
+    slug: "healthcare-pharmaceuticals",
+    title: "Healthcare & Pharmaceuticals",
+    description:
+      "Drug licensing, GMP/HACCP certification, and corporate compliance tailored to the regulatory intensity of healthcare businesses.",
+    keyServices: ["Government Business Licenses", "Certifications", "Corporate Compliance"],
+    image: pexelsPhoto(6129240),
+    imageAlt: "Physician in a white coat checking up on a patient",
+    stats: [
+      { value: "8", label: "Certifications Supported" },
+      { value: "Multi-State", label: "Drug License Filing" },
+      { value: "15-45", label: "Days for Audit Readiness" },
+    ],
+    challenges: [
+      "Drug license renewals across multiple states with different timelines",
+      "GMP/HACCP audit readiness falling behind as facilities expand",
+      "Patient data handling and confidentiality obligations left undocumented",
+      "Corporate governance filings overlooked amid day-to-day clinical operations",
+    ],
+  },
+  {
+    slug: "finance-banking-fintech",
+    title: "Finance, Banking & FinTech",
+    description:
+      "Regulatory registrations, FEMA compliance, and corporate governance support for financial services and fintech companies.",
+    keyServices: ["International Business Services", "Corporate Compliance", "Financial & Advisory Services"],
+    image: pexelsPhoto(12008066),
+    imageAlt: "Finance professional at a bank counter",
+    stats: [
+      { value: "100%", label: "FEMA Filing Accuracy" },
+      { value: "Multi-State", label: "Registration Support" },
+      { value: "0", label: "Governance Filing Misses" },
+    ],
+    challenges: [
+      "RBI/FEMA compliance requirements missed during foreign investment rounds",
+      "Corporate governance obligations growing faster than internal processes",
+      "Multi-state registration needed as lending or payment operations expand",
+      "FLA and FC-GPR returns filed late or incorrectly after fundraising",
+    ],
+  },
+  {
+    slug: "education-edtech",
+    title: "Education & EdTech",
+    description:
+      "Trust and society registration, IPR protection for course content and platforms, and ongoing tax compliance for education businesses.",
+    keyServices: ["Business Registration & Setup", "Intellectual Property (IPR)", "Tax Registration & Filing"],
+    image: pexelsPhoto(37795357),
+    imageAlt: "Teacher leading a classroom discussion",
+    stats: [
+      { value: "3", label: "Entity Structures Supported" },
+      { value: "100%", label: "Course IP Filing Support" },
+      { value: "Pan-India", label: "Tax Compliance Coverage" },
+    ],
+    challenges: [
+      "Trust or society structure chosen without matching the actual business model",
+      "Course content and platform IP left unregistered and unprotected",
+      "GST treatment of education services applied incorrectly",
+      "Tax exemptions and benefits missed due to incomplete registration",
+    ],
+  },
+  {
+    slug: "retail-ecommerce",
+    title: "Retail & E-Commerce",
+    description:
+      "GST, trade licenses, and GeM registration support for retail brands and e-commerce sellers scaling across states.",
+    keyServices: ["Government & Regulatory Registrations", "Government Business Licenses", "Tax Registration & Filing"],
+    image: pexelsPhoto(8311880),
+    imageAlt: "Shoppers browsing in a retail store",
+    stats: [
+      { value: "Pan-India", label: "GST Registration Support" },
+      { value: "9", label: "License Types Managed" },
+      { value: "100%", label: "GeM Filing Accuracy" },
+    ],
+    challenges: [
+      "GST registration missing in states where goods are shipped or stocked",
+      "Trade license renewals falling behind across multiple store locations",
+      "GeM registration missed, losing access to government buyers",
+      "Return and refund policies not aligned with consumer protection rules",
+    ],
+  },
+  {
+    slug: "service-based-businesses",
+    title: "Service-Based Businesses",
+    description:
+      "Lean compliance support for consultancies, agencies, and professional service firms — registration, tax, and contracts.",
+    keyServices: ["Business Registration & Setup", "Legal Documentation", "Tax Registration & Filing"],
+    image: pexelsPhoto(36733331),
+    imageAlt: "Professional colleagues in a business meeting",
+    stats: [
+      { value: "6", label: "Contract Types Drafted" },
+      { value: "Pan-India", label: "Professional Tax Support" },
+      { value: "0", label: "Missed Filing Deadlines" },
+    ],
+    challenges: [
+      "Client contracts with unclear scope, payment, and liability terms",
+      "Professional tax registration overlooked as the team grows across states",
+      "No compliance calendar in place as the client base and revenue scale",
+      "NDAs and service agreements reused from generic templates without review",
+    ],
+  },
+];
+
+export function getIndustryBySlug(slug: string) {
+  return industries.find((i) => i.slug === slug);
+}
