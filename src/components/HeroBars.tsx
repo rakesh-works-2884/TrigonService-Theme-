@@ -30,7 +30,7 @@ export default function HeroBars() {
         };
 
   return (
-    <div ref={ref} className="pointer-events-none absolute inset-0">
+    <div ref={ref} className="pointer-events-none absolute inset-0 z-10">
       {/* Main diagonal color panel — solid gradient, not a tinted photo overlay, so hero text stays legible */}
       <div
         className="pointer-events-none absolute inset-y-0 left-0 w-[62%] bg-gradient-to-br from-primary via-primary to-secondary/90 sm:w-[58%]"
