@@ -66,14 +66,14 @@ export default async function ServicePillarPage({ params }: { params: Promise<{ 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <FadeIn>
-              <h2 className="text-xl font-bold text-navy">What&apos;s Included</h2>
+              <h2 className="text-xl font-bold text-heading">What&apos;s Included</h2>
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {service.subServices.map((sub) => (
                   <div
                     key={sub}
                     className="hover-tilt flex items-start gap-3 rounded-xl border border-slate-100 bg-white p-4 shadow-sm"
                   >
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan/10 text-xs font-bold text-cyan">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/10 text-xs font-bold text-accent">
                       ✓
                     </span>
                     <span className="text-sm text-slate-700">{sub}</span>
@@ -83,12 +83,12 @@ export default async function ServicePillarPage({ params }: { params: Promise<{ 
             </FadeIn>
 
             <FadeIn delay={100}>
-              <h2 className="mt-14 text-xl font-bold text-navy">How It Works</h2>
+              <h2 className="mt-14 text-xl font-bold text-heading">How It Works</h2>
               <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {processSteps.map((step, idx) => (
                   <div key={step.title} className="hover-tilt rounded-xl border border-slate-100 bg-white p-5 shadow-sm">
-                    <span className="text-2xl font-bold text-cyan/30">{String(idx + 1).padStart(2, "0")}</span>
-                    <h3 className="mt-2 text-sm font-semibold text-navy">{step.title}</h3>
+                    <span className="text-2xl font-bold text-accent/30">{String(idx + 1).padStart(2, "0")}</span>
+                    <h3 className="mt-2 text-sm font-semibold text-heading">{step.title}</h3>
                     <p className="mt-1 text-xs leading-relaxed text-slate-500">{step.description}</p>
                   </div>
                 ))}
@@ -96,7 +96,7 @@ export default async function ServicePillarPage({ params }: { params: Promise<{ 
             </FadeIn>
 
             <FadeIn delay={150}>
-              <h2 className="mt-14 text-xl font-bold text-navy">Frequently Asked Questions</h2>
+              <h2 className="mt-14 text-xl font-bold text-heading">Frequently Asked Questions</h2>
               <div className="mt-6">
                 <Accordion items={service.faq} />
               </div>
@@ -109,7 +109,7 @@ export default async function ServicePillarPage({ params }: { params: Promise<{ 
               <ul className="mt-4 space-y-3">
                 {service.documentsRequired.map((doc) => (
                   <li key={doc} className="flex items-start gap-2 text-sm text-slate-600">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                     {doc}
                   </li>
                 ))}
@@ -118,28 +118,28 @@ export default async function ServicePillarPage({ params }: { params: Promise<{ 
 
             <div className="hover-tilt rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
               <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-400">Estimated Timeline</h3>
-              <p className="mt-3 text-sm font-medium text-navy">{service.timeline}</p>
+              <p className="mt-3 text-sm font-medium text-primary">{service.timeline}</p>
             </div>
 
-            <div className="rounded-2xl gradient-brand p-6 text-white shadow-sm">
+            <div className="bg-primary p-6 text-white shadow-sm">
               <h3 className="text-base font-semibold">Need help with {service.shortTitle}?</h3>
               <p className="mt-2 text-sm text-slate-200">Talk to our experts and get a clear scope and quote.</p>
-              <ConsultationButton className="mt-5 w-full rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-navy hover:bg-warmgray" />
+              <ConsultationButton className="btn-brand mt-5 w-full bg-white !text-primary hover:bg-warmgray" />
             </div>
           </FadeIn>
         </div>
 
         <FadeIn delay={150}>
           <div className="mt-16 border-t border-slate-100 pt-12">
-            <h2 className="text-xl font-bold text-navy">Related Services</h2>
+            <h2 className="text-xl font-bold text-heading">Related Services</h2>
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
               {related.map((r) => (
                 <Link
                   key={r.slug}
                   href={`/services/${r.slug}`}
-                  className="hover-tilt group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:border-cyan/40 hover:shadow-xl"
+                  className="hover-tilt group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:border-accent/40 hover:shadow-xl"
                 >
-                  <div className="relative h-24 w-full overflow-hidden">
+                  <div className="img-tilt relative h-24 w-full overflow-hidden">
                     <Image
                       src={r.image}
                       alt={r.imageAlt}
@@ -149,7 +149,7 @@ export default async function ServicePillarPage({ params }: { params: Promise<{ 
                     />
                   </div>
                   <div className="p-5">
-                    <h3 className="text-sm font-semibold text-navy">{r.title}</h3>
+                    <h3 className="text-sm font-semibold text-heading">{r.title}</h3>
                     <p className="mt-2 text-xs text-slate-500">{r.summary}</p>
                   </div>
                 </Link>

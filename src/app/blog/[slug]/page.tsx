@@ -24,17 +24,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-      <Link href="/blog" className="text-sm font-medium text-cyan hover:underline">
+      <Link href="/blog" className="text-sm font-medium text-accent hover:underline">
         ← Back to Blog
       </Link>
-      <span className="mt-6 block text-xs font-semibold uppercase tracking-wide text-cyan">{post.category}</span>
-      <h1 className="mt-3 text-3xl font-bold tracking-tight text-navy sm:text-4xl">{post.title}</h1>
+      <span className="mt-6 block text-xs font-semibold uppercase tracking-wide text-accent">{post.category}</span>
+      <h1 className="mt-3 text-3xl font-bold tracking-tight text-heading sm:text-4xl">{post.title}</h1>
       <p className="mt-3 text-sm text-slate-400">
         {new Date(post.date).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })}
       </p>
 
       {post.image && (
-        <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-lg">
+        <div className="img-tilt relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-lg">
           <Image src={post.image} alt={post.title} fill sizes="(min-width: 768px) 768px, 100vw" className="object-cover" priority />
         </div>
       )}
@@ -47,10 +47,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         ))}
       </div>
 
-      <div className="mt-14 rounded-2xl gradient-brand p-8 text-center text-white">
+      <div className="mt-14 bg-primary p-8 text-center text-white">
         <h3 className="text-lg font-bold">Need help with this?</h3>
         <p className="mt-2 text-sm text-slate-200">Talk to our compliance team for guidance specific to your business.</p>
-        <ConsultationButton className="mt-5 rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-navy hover:bg-warmgray" />
+        <ConsultationButton className="btn-brand mt-5 bg-white !text-primary hover:bg-warmgray" />
       </div>
     </article>
   );

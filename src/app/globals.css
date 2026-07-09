@@ -2,38 +2,66 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: #0f1f2e;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-jakarta);
+  --font-sans: var(--font-catamaran);
 
-  --color-navy: #0b3d6d;
-  --color-navy-dark: #082c4f;
-  --color-navy-light: #14508c;
-  --color-cyan: #0ea5e9;
-  --color-cyan-light: #22d3ee;
-  --color-warmgray: #f3f4f6;
-  --color-warmgray-dark: #4b5563;
+  --color-primary: #0071b5;
+  --color-primary-dark: #00496b;
+  --color-primary-light: #2a9fd6;
+  --color-secondary: #22c3ea;
+  --color-accent: #22c3ea;
+  --color-accent-light: #8fe4f5;
+  --color-heading: #0f1f2e;
+  --color-body: #56636f;
+  --color-light: #dce7f0;
+  --color-warmgray: #eef4fa;
+  --color-warmgray-dark: #56636f;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-jakarta), Arial, Helvetica, sans-serif;
+  font-family: var(--font-catamaran), Arial, Helvetica, sans-serif;
 }
 
-.gradient-brand {
-  background-image: linear-gradient(135deg, var(--color-navy) 0%, var(--color-cyan) 65%, var(--color-cyan-light) 100%);
-}
+/* Theme-accurate button: 5px radius, not pill-shaped.
+   Wrapped in @layer components so utility classes (bg-white, !text-primary, etc.)
+   always win in the cascade without needing !important on every override. */
+@layer components {
+  .btn-brand {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 12px 25px;
+    line-height: 1.5em;
+    font-weight: 600;
+    background-color: var(--color-primary);
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
 
-.gradient-text {
-  background-image: linear-gradient(90deg, var(--color-cyan) 0%, var(--color-cyan-light) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  .btn-brand:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .btn-brand-outline {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 12px 25px;
+    line-height: 1.5em;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-brand-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 }
 
 @keyframes float-y {
@@ -41,60 +69,8 @@ body {
   50% { transform: translateY(-10px) rotate(var(--float-rotate, 0deg)); }
 }
 
-@keyframes float-slow {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(12px, -18px) scale(1.05); }
-}
-
-@keyframes pulse-soft {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .animate-float {
   animation: float-y 5s ease-in-out infinite;
-}
-
-.animate-float-slow {
-  animation: float-slow 9s ease-in-out infinite;
-}
-
-.animate-pulse-soft {
-  animation: pulse-soft 3s ease-in-out infinite;
-}
-
-.animate-spin-slow {
-  animation: spin-slow 14s linear infinite;
-}
-
-/* Layered 3D card effect: perspective wrapper + tilted photo with a hover reset */
-.perspective-1000 {
-  perspective: 1200px;
-}
-
-.tilt-card {
-  transform: rotate3d(0.3, -1, 0, 6deg) scale(1);
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  transform-style: preserve-3d;
-}
-
-.tilt-card:hover {
-  transform: rotate3d(0, 0, 0, 0deg) scale(1.02);
-}
-
-.tilt-card-left {
-  transform: rotate3d(-0.3, 1, 0, 6deg) scale(1);
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  transform-style: preserve-3d;
-}
-
-.tilt-card-left:hover {
-  transform: rotate3d(0, 0, 0, 0deg) scale(1.02);
 }
 
 /* Scroll-reveal transition, toggled by the FadeIn client component */
@@ -109,11 +85,101 @@ body {
   transform: translateY(0);
 }
 
-/* Subtle 3D lift for grid cards on hover */
+/* Subtle lift for plain content cards not covered by the theme's parsed widget specs */
 .hover-tilt {
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hover-tilt:hover {
-  transform: perspective(800px) rotateX(4deg) rotateY(-4deg) translateY(-6px);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -20px rgba(29, 23, 41, 0.25);
+}
+
+/* 3D tilt for photo/image containers site-wide */
+.img-tilt {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.img-tilt:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-6deg) scale(1.035) translateY(-4px);
+  box-shadow: 0 30px 60px -20px rgba(15, 31, 46, 0.4);
+}
+
+/* Slow continuous zoom for full-bleed hero photography */
+@keyframes ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.12); }
+}
+
+.hero-kenburns {
+  animation: ken-burns 20s ease-in-out infinite alternate;
+}
+
+/* Scroll-triggered pop-in for image blocks, pairs well with .img-tilt */
+.img-pop {
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.img-pop.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img-tilt,
+  .img-tilt:hover,
+  .hero-kenburns,
+  .img-pop {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Swiper overrides matching the real theme's widget CSS exactly */
+.theme-swiper .swiper-button-prev,
+.theme-swiper .swiper-button-next {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: all 0.3s linear;
+}
+
+.theme-swiper .swiper-button-prev:hover,
+.theme-swiper .swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.theme-swiper .swiper-button-prev::after,
+.theme-swiper .swiper-button-next::after {
+  font-size: 16px;
+  color: #fff;
+}
+
+.theme-swiper .swiper-pagination-bullet {
+  width: 30px;
+  height: 5px;
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.15);
+  opacity: 1;
+  transition: background-color 0.5s ease, width 0.5s ease, transform 0.5s ease;
+}
+
+.theme-swiper .swiper-pagination-bullet-active {
+  background: var(--color-primary);
+  width: 42px;
+}
+
+.theme-swiper.on-dark .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.theme-swiper.on-dark .swiper-pagination-bullet-active {
+  background: #fff;
 }

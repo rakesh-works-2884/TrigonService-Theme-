@@ -82,6 +82,29 @@ export const blogCategories = [
   "Business Growth & Legal Insights",
 ];
 
+export const team = [
+  {
+    key: "lawyers",
+    role: "Corporate Lawyers",
+    description: "Handling legal documentation, IPR, and regulatory filings.",
+  },
+  {
+    key: "company-secretaries",
+    role: "Company Secretaries (CS)",
+    description: "Managing ROC compliance, incorporation, and corporate governance.",
+  },
+  {
+    key: "chartered-accountants",
+    role: "Chartered Accountants (CA)",
+    description: "Overseeing tax filing, bookkeeping, and financial advisory.",
+  },
+  {
+    key: "compliance-specialists",
+    role: "Compliance Specialists",
+    description: "Tracking licenses, labour law, and certification renewals end-to-end.",
+  },
+];
+
 export const coreValues = [
   {
     title: "Integrity & Trust",

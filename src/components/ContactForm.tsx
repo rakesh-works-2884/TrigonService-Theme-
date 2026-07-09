@@ -12,10 +12,10 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div className="rounded-2xl border border-slate-100 bg-white p-10 text-center shadow-sm">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-cyan/10 text-2xl text-cyan">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-2xl text-accent">
           ✓
         </div>
-        <h3 className="text-xl font-semibold text-navy">Message sent</h3>
+        <h3 className="text-xl font-semibold text-heading">Message sent</h3>
         <p className="mt-2 text-slate-600">Thank you for reaching out. Our team will respond within 24 hours.</p>
       </div>
     );
@@ -52,7 +52,7 @@ export default function ContactForm() {
           <input
             required
             name="name"
-            className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+            className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
         </div>
         <div>
@@ -61,7 +61,7 @@ export default function ContactForm() {
             required
             type="tel"
             name="phone"
-            className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+            className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function ContactForm() {
           required
           type="email"
           name="email"
-          className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+          className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
         />
       </div>
       <div>
@@ -79,7 +79,7 @@ export default function ContactForm() {
         <select
           name="service"
           defaultValue=""
-          className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+          className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
         >
           <option value="" disabled>
             Select a service
@@ -96,17 +96,13 @@ export default function ContactForm() {
         <textarea
           name="message"
           rows={4}
-          className="mt-2 w-full resize-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+          className="mt-2 w-full resize-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
         />
       </div>
 
       {error && <p className="text-sm text-red-600">{error}</p>}
 
-      <button
-        type="submit"
-        disabled={submitting}
-        className="w-full rounded-full bg-gradient-to-r from-navy to-cyan px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:opacity-90 disabled:opacity-60 sm:w-auto"
-      >
+      <button type="submit" disabled={submitting} className="btn-brand w-full disabled:opacity-60 sm:w-auto">
         {submitting ? "Sending..." : "Send Message"}
       </button>
     </form>

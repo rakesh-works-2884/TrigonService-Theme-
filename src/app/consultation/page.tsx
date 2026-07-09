@@ -30,11 +30,11 @@ export default function ConsultationPage() {
         <ContactForm />
         <p className="mt-6 text-center text-sm text-slate-500">
           Prefer to talk directly? Call us at{" "}
-          <a href={`tel:${siteConfig.phoneHref}`} className="font-medium text-navy hover:text-cyan">
+          <a href={`tel:${siteConfig.phoneHref}`} className="font-medium text-primary hover:text-accent">
             {siteConfig.phone}
           </a>{" "}
           or email{" "}
-          <a href={`mailto:${siteConfig.email}`} className="font-medium text-navy hover:text-cyan">
+          <a href={`mailto:${siteConfig.email}`} className="font-medium text-primary hover:text-accent">
             {siteConfig.email}
           </a>
           .

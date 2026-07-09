@@ -28,11 +28,11 @@ export default function TestimonialsPage() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {testimonials.map((t) => (
               <div key={t.attribution} className="hover-tilt rounded-2xl border border-slate-100 bg-white p-8 shadow-sm">
-                <svg className="mb-4 h-7 w-7 text-cyan/40" fill="currentColor" viewBox="0 0 32 32">
+                <svg className="mb-4 h-7 w-7 text-accent/40" fill="currentColor" viewBox="0 0 32 32">
                   <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2V8Zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2V8Z" />
                 </svg>
                 <p className="text-base leading-relaxed text-slate-700">&ldquo;{t.quote}&rdquo;</p>
-                <p className="mt-5 text-sm font-semibold text-navy">— {t.attribution}</p>
+                <p className="mt-5 text-sm font-semibold text-primary">— {t.attribution}</p>
               </div>
             ))}
           </div>
@@ -42,7 +42,7 @@ export default function TestimonialsPage() {
       <section className="bg-warmgray py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <h2 className="text-center text-2xl font-bold text-navy sm:text-3xl">Trusted Across Industries</h2>
+            <h2 className="text-center text-2xl font-bold text-heading sm:text-3xl">Trusted Across Industries</h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-slate-600">
               These are just a few of the sectors where our clients have put us to the test.
             </p>
@@ -51,7 +51,7 @@ export default function TestimonialsPage() {
                 <Link
                   key={i.slug}
                   href={`/industries/${i.slug}`}
-                  className="hover-tilt rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-navy shadow-sm hover:border-cyan hover:text-cyan"
+                  className="hover-tilt rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-primary shadow-sm hover:border-accent hover:text-accent"
                 >
                   {i.title}
                 </Link>

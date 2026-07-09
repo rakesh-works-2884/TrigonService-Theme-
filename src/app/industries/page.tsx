@@ -25,9 +25,9 @@ export default function IndustriesPage() {
             <Link
               key={i.slug}
               href={`/industries/${i.slug}`}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-lg"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg"
             >
-              <div className="relative h-36 w-full overflow-hidden">
+              <div className="img-tilt relative h-36 w-full overflow-hidden">
                 <Image
                   src={i.image}
                   alt={i.imageAlt}
@@ -35,10 +35,10 @@ export default function IndustriesPage() {
                   sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover transition duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/50 to-transparent" />
               </div>
               <div className="p-6">
-                <h2 className="text-base font-semibold text-navy group-hover:text-cyan">{i.title}</h2>
+                <h2 className="text-base font-semibold text-heading group-hover:text-accent">{i.title}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-slate-500">{i.description}</p>
               </div>
             </Link>

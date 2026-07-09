@@ -22,7 +22,7 @@ export default function ContactPage() {
           </div>
 
           <div className="space-y-6 lg:col-span-2">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-md">
+            <div className="img-tilt relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-md">
               <Image
                 src={pexelsPhoto(8297445, 800)}
                 alt="Trigon Services team reviewing compliance documents together"
@@ -33,13 +33,13 @@ export default function ContactPage() {
             </div>
             <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
               <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-400">Email</h3>
-              <a href={`mailto:${siteConfig.email}`} className="mt-2 block text-sm font-medium text-navy hover:text-cyan">
+              <a href={`mailto:${siteConfig.email}`} className="mt-2 block text-sm font-medium text-primary hover:text-accent">
                 {siteConfig.email}
               </a>
             </div>
             <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
               <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-400">Phone</h3>
-              <a href={`tel:${siteConfig.phoneHref}`} className="mt-2 block text-sm font-medium text-navy hover:text-cyan">
+              <a href={`tel:${siteConfig.phoneHref}`} className="mt-2 block text-sm font-medium text-primary hover:text-accent">
                 {siteConfig.phone}
               </a>
             </div>

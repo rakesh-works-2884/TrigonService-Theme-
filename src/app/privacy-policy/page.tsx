@@ -15,28 +15,28 @@ export default function PrivacyPolicyPage() {
         <p className="text-sm text-slate-400">Last updated: July 5, 2026</p>
 
         <div>
-          <h2 className="text-lg font-semibold text-navy">1. Information We Collect</h2>
+          <h2 className="text-lg font-semibold text-heading">1. Information We Collect</h2>
           <p className="mt-2 leading-relaxed">
             When you use our consultation forms, contact us, or subscribe to our newsletter, we collect information
             such as your name, email address, phone number, and details about the service you are enquiring about.
           </p>
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-navy">2. How We Use Your Information</h2>
+          <h2 className="text-lg font-semibold text-heading">2. How We Use Your Information</h2>
           <p className="mt-2 leading-relaxed">
             We use the information you provide to respond to enquiries, deliver the services you request, and, where
             you have opted in, to send updates about compliance deadlines and relevant news.
           </p>
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-navy">3. Cookies</h2>
+          <h2 className="text-lg font-semibold text-heading">3. Cookies</h2>
           <p className="mt-2 leading-relaxed">
             We use cookies to improve site functionality and understand how visitors use our website. You can control
             cookie preferences through your browser settings.
           </p>
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-navy">4. Data Sharing</h2>
+          <h2 className="text-lg font-semibold text-heading">4. Data Sharing</h2>
           <p className="mt-2 leading-relaxed">
             We do not sell your personal information. We may share information with regulatory authorities where
             required by law, or with service providers who help us operate our business, under confidentiality
@@ -44,10 +44,10 @@ export default function PrivacyPolicyPage() {
           </p>
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-navy">5. Contact Us</h2>
+          <h2 className="text-lg font-semibold text-heading">5. Contact Us</h2>
           <p className="mt-2 leading-relaxed">
             For questions about this policy, contact us at{" "}
-            <a href={`mailto:${siteConfig.email}`} className="font-medium text-navy underline">
+            <a href={`mailto:${siteConfig.email}`} className="font-medium text-primary underline">
               {siteConfig.email}
             </a>
             .

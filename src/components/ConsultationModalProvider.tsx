@@ -61,30 +61,27 @@ export default function ConsultationModalProvider({ children }: { children: Reac
             <button
               onClick={closeModal}
               aria-label="Close"
-              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-slate-400 hover:bg-warmgray hover:text-navy"
+              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-slate-400 hover:bg-warmgray hover:text-primary"
             >
               &times;
             </button>
 
             {submitted ? (
               <div className="py-10 text-center">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-cyan/10 text-2xl text-cyan">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-2xl text-accent">
                   ✓
                 </div>
-                <h3 className="text-xl font-semibold text-navy">Thank you!</h3>
+                <h3 className="text-xl font-semibold text-heading">Thank you!</h3>
                 <p className="mt-2 text-slate-600">
                   Your request has been received. Our team will reach out within 24 hours.
                 </p>
-                <button
-                  onClick={closeModal}
-                  className="mt-6 rounded-full bg-navy px-6 py-2.5 text-sm font-medium text-white hover:bg-navy-dark"
-                >
+                <button onClick={closeModal} className="btn-brand mt-6">
                   Close
                 </button>
               </div>
             ) : (
               <>
-                <h3 className="text-xl font-semibold text-navy sm:text-2xl">Get a Free Consultation</h3>
+                <h3 className="text-xl font-semibold text-heading sm:text-2xl">Get a Free Consultation</h3>
                 <p className="mt-1 text-sm text-slate-500">
                   Tell us what you need — our team will get back to you within 24 hours.
                 </p>
@@ -116,14 +113,14 @@ export default function ConsultationModalProvider({ children }: { children: Reac
                       required
                       name="name"
                       placeholder="Full name"
-                      className="rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+                      className="rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                     />
                     <input
                       required
                       type="tel"
                       name="phone"
                       placeholder="Phone number"
-                      className="rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+                      className="rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                     />
                   </div>
                   <input
@@ -131,12 +128,12 @@ export default function ConsultationModalProvider({ children }: { children: Reac
                     type="email"
                     name="email"
                     placeholder="Email address"
-                    className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+                    className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   />
                   <select
                     name="service"
                     defaultValue=""
-                    className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+                    className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   >
                     <option value="" disabled>
                       Service of interest
@@ -151,21 +148,17 @@ export default function ConsultationModalProvider({ children }: { children: Reac
                     name="message"
                     rows={3}
                     placeholder="Tell us briefly what you need"
-                    className="w-full resize-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+                    className="w-full resize-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   />
 
                   {error && <p className="text-sm text-red-600">{error}</p>}
 
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="w-full rounded-full bg-gradient-to-r from-navy to-cyan px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:opacity-90 disabled:opacity-60"
-                  >
+                  <button type="submit" disabled={submitting} className="btn-brand w-full disabled:opacity-60">
                     {submitting ? "Sending..." : "Request Consultation"}
                   </button>
                   <p className="text-center text-xs text-slate-400">
                     Or reach us directly at{" "}
-                    <a href={`tel:${siteConfig.phoneHref}`} className="font-medium text-navy">
+                    <a href={`tel:${siteConfig.phoneHref}`} className="font-medium text-primary">
                       {siteConfig.phone}
                     </a>
                   </p>

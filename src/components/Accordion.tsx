@@ -15,8 +15,8 @@ export default function Accordion({ items }: { items: { question: string; answer
               onClick={() => setOpenIndex(isOpen ? null : idx)}
               className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left"
             >
-              <span className="text-sm font-semibold text-navy">{item.question}</span>
-              <span className={`shrink-0 text-lg text-cyan transition-transform ${isOpen ? "rotate-45" : ""}`}>+</span>
+              <span className="text-sm font-semibold text-primary">{item.question}</span>
+              <span className={`shrink-0 text-lg text-accent transition-transform ${isOpen ? "rotate-45" : ""}`}>+</span>
             </button>
             {isOpen && <p className="px-6 pb-5 text-sm leading-relaxed text-slate-600">{item.answer}</p>}
           </div>

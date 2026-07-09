@@ -24,7 +24,10 @@ const icons = [
   },
 ];
 
-export default function SocialIcons() {
+export default function SocialIcons({ size = "md" }: { size?: "sm" | "md" }) {
+  const wrapperSize = size === "sm" ? "h-6 w-6" : "h-9 w-9";
+  const iconSize = size === "sm" ? "h-3 w-3" : "h-4 w-4";
+
   return (
     <div className="flex gap-3">
       {icons.map((icon) => (
@@ -34,9 +37,9 @@ export default function SocialIcons() {
           aria-label={icon.label}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-cyan"
+          className={`flex ${wrapperSize} items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-accent`}
         >
-          <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+          <svg viewBox="0 0 24 24" fill="currentColor" className={iconSize}>
             {icon.path}
           </svg>
         </a>

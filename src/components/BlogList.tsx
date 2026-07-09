@@ -24,7 +24,7 @@ export default function BlogList({ posts, categories }: { posts: BlogPost[]; cat
           <button
             onClick={() => setActiveCategory(null)}
             className={`rounded-full px-4 py-1.5 text-xs font-semibold ${
-              activeCategory === null ? "bg-navy text-white" : "bg-warmgray text-slate-600 hover:bg-slate-200"
+              activeCategory === null ? "bg-primary text-white" : "bg-warmgray text-slate-600 hover:bg-slate-200"
             }`}
           >
             All
@@ -34,7 +34,7 @@ export default function BlogList({ posts, categories }: { posts: BlogPost[]; cat
               key={c}
               onClick={() => setActiveCategory(c)}
               className={`rounded-full px-4 py-1.5 text-xs font-semibold ${
-                activeCategory === c ? "bg-navy text-white" : "bg-warmgray text-slate-600 hover:bg-slate-200"
+                activeCategory === c ? "bg-primary text-white" : "bg-warmgray text-slate-600 hover:bg-slate-200"
               }`}
             >
               {c}
@@ -45,7 +45,7 @@ export default function BlogList({ posts, categories }: { posts: BlogPost[]; cat
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search articles..."
-          className="w-full rounded-full border border-slate-200 px-4 py-2 text-sm sm:w-64 focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+          className="w-full rounded-full border border-slate-200 px-4 py-2 text-sm sm:w-64 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
         />
       </div>
 
@@ -56,7 +56,7 @@ export default function BlogList({ posts, categories }: { posts: BlogPost[]; cat
             href={`/blog/${post.slug}`}
             className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
           >
-            <div className="relative h-40 w-full overflow-hidden">
+            <div className="img-tilt relative h-40 w-full overflow-hidden">
               {post.image ? (
                 <Image
                   src={post.image}
@@ -66,7 +66,7 @@ export default function BlogList({ posts, categories }: { posts: BlogPost[]; cat
                   className="object-cover transition duration-300 group-hover:scale-105"
                 />
               ) : (
-                <div className="flex h-full w-full items-center justify-center gradient-brand">
+                <div className="flex h-full w-full items-center justify-center bg-primary">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-10 w-10 text-white/70">
                     <path d="M7 3h7l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z" />
                     <path d="M14 3v5h5" />
@@ -76,8 +76,8 @@ export default function BlogList({ posts, categories }: { posts: BlogPost[]; cat
               )}
             </div>
             <div className="p-6">
-              <span className="text-xs font-semibold uppercase tracking-wide text-cyan">{post.category}</span>
-              <h3 className="mt-3 text-base font-semibold text-navy">{post.title}</h3>
+              <span className="text-xs font-semibold uppercase tracking-wide text-accent">{post.category}</span>
+              <h3 className="mt-3 text-base font-semibold text-heading">{post.title}</h3>
               <p className="mt-2 line-clamp-2 text-sm text-slate-500">{post.excerpt}</p>
               <p className="mt-4 text-xs text-slate-400">
                 {new Date(post.date).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })}

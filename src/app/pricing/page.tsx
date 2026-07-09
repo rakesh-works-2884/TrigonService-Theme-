@@ -58,30 +58,28 @@ export default function PricingPage() {
               <div
                 key={plan.slug}
                 className={`hover-tilt flex flex-col rounded-2xl border p-8 shadow-sm ${
-                  plan.highlighted ? "border-cyan bg-white ring-2 ring-cyan" : "border-slate-100 bg-white"
+                  plan.highlighted ? "border-accent bg-white ring-2 ring-accent" : "border-slate-100 bg-white"
                 }`}
               >
                 {plan.highlighted && (
-                  <span className="mb-4 inline-block w-fit rounded-full bg-cyan/10 px-3 py-1 text-xs font-semibold text-cyan">
+                  <span className="mb-4 inline-block w-fit rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
                     Most Popular
                   </span>
                 )}
-                <h2 className="text-lg font-bold text-navy">{plan.name}</h2>
-                <p className="mt-4 text-3xl font-bold text-navy">{plan.startingPrice}</p>
+                <h2 className="text-lg font-bold text-heading">{plan.name}</h2>
+                <p className="mt-4 text-3xl font-bold text-primary">{plan.startingPrice}</p>
                 <p className="mt-1 text-xs text-slate-400">{plan.billingNote}</p>
                 <ul className="mt-6 flex-1 space-y-3">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-slate-600">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                       {f}
                     </li>
                   ))}
                 </ul>
                 <ConsultationButton
-                  className={`mt-8 w-full rounded-full px-5 py-3 text-sm font-semibold ${
-                    plan.highlighted
-                      ? "bg-gradient-to-r from-navy to-cyan text-white hover:opacity-90"
-                      : "border border-navy text-navy hover:bg-warmgray"
+                  className={`btn-brand mt-8 w-full text-center uppercase ${
+                    plan.highlighted ? "" : "!bg-transparent !text-primary border border-primary hover:!bg-warmgray"
                   }`}
                 >
                   Get Started
@@ -98,7 +96,7 @@ export default function PricingPage() {
       <section className="bg-warmgray py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <h2 className="text-center text-2xl font-bold text-navy sm:text-3xl">Pricing Questions</h2>
+            <h2 className="text-center text-2xl font-bold text-heading sm:text-3xl">Pricing Questions</h2>
             <div className="mt-10">
               <Accordion items={pricingFaq} />
             </div>

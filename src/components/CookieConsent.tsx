@@ -26,15 +26,12 @@ export default function CookieConsent() {
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-4 sm:flex-row sm:px-6 lg:px-8">
         <p className="text-center text-sm text-slate-600 sm:text-left">
           We use cookies to improve your experience on our site. By continuing, you agree to our{" "}
-          <a href="/privacy-policy" className="font-medium text-navy underline">
+          <a href="/privacy-policy" className="font-medium text-primary underline">
             Privacy Policy
           </a>
           .
         </p>
-        <button
-          onClick={accept}
-          className="shrink-0 rounded-full bg-navy px-5 py-2 text-sm font-semibold text-white hover:bg-navy-dark"
-        >
+        <button onClick={accept} className="btn-brand shrink-0">
           Accept
         </button>
       </div>

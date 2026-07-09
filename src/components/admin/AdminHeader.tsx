@@ -18,7 +18,7 @@ export default function AdminHeader() {
   return (
     <header className="border-b border-slate-200 bg-white">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
-        <Link href="/admin" className="text-sm font-bold text-navy">
+        <Link href="/admin" className="text-sm font-bold text-primary">
           Trigon Admin
         </Link>
         <nav className="flex items-center gap-2">
@@ -27,7 +27,7 @@ export default function AdminHeader() {
           </Link>
           <Link
             href="/admin/posts/new"
-            className="rounded-full bg-navy px-4 py-1.5 text-sm font-semibold text-white hover:bg-navy-dark"
+            className="rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-white hover:bg-primary-dark"
           >
             + New Post
           </Link>

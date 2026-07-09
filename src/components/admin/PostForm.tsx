@@ -118,7 +118,7 @@ export default function PostForm({ mode, initialPost }: Props) {
               accept="image/png,image/jpeg,image/webp,image/gif"
               onChange={handleFileSelect}
               disabled={uploading}
-              className="text-sm text-slate-600 file:mr-3 file:rounded-full file:border-0 file:bg-navy file:px-4 file:py-2 file:text-xs file:font-semibold file:text-white hover:file:bg-navy-dark"
+              className="text-sm text-slate-600 file:mr-3 file:rounded-full file:border-0 file:bg-primary file:px-4 file:py-2 file:text-xs file:font-semibold file:text-white hover:file:bg-primary-dark"
             />
             {uploading && <p className="text-xs text-slate-500">Uploading...</p>}
             {uploadError && <p className="text-xs text-red-600">{uploadError}</p>}
@@ -141,7 +141,7 @@ export default function PostForm({ mode, initialPost }: Props) {
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+          className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
         />
       </div>
 
@@ -153,7 +153,7 @@ export default function PostForm({ mode, initialPost }: Props) {
             list="admin-categories"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+            className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
           <datalist id="admin-categories">
             {blogCategories.map((c) => (
@@ -168,7 +168,7 @@ export default function PostForm({ mode, initialPost }: Props) {
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+            className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
         </div>
       </div>
@@ -180,7 +180,7 @@ export default function PostForm({ mode, initialPost }: Props) {
           rows={2}
           value={excerpt}
           onChange={(e) => setExcerpt(e.target.value)}
-          className="mt-2 w-full resize-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+          className="mt-2 w-full resize-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
         />
       </div>
 
@@ -193,7 +193,7 @@ export default function PostForm({ mode, initialPost }: Props) {
           rows={12}
           value={bodyText}
           onChange={(e) => setBodyText(e.target.value)}
-          className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm leading-relaxed focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+          className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm leading-relaxed focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
         />
       </div>
 
@@ -203,7 +203,7 @@ export default function PostForm({ mode, initialPost }: Props) {
         <button
           type="submit"
           disabled={saving || uploading}
-          className="rounded-full bg-gradient-to-r from-navy to-cyan px-6 py-2.5 text-sm font-semibold text-white shadow-md transition hover:opacity-90 disabled:opacity-60"
+          className="rounded-full bg-gradient-to-r from-primary to-accent px-6 py-2.5 text-sm font-semibold text-white shadow-md transition hover:opacity-90 disabled:opacity-60"
         >
           {saving ? "Saving..." : mode === "create" ? "Publish Post" : "Save Changes"}
         </button>

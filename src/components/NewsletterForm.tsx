@@ -8,9 +8,9 @@ export default function NewsletterForm() {
         <input
           type="email"
           placeholder="Your email"
-          className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-cyan focus:outline-none"
+          className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-accent focus:outline-none"
         />
-        <button className="shrink-0 rounded-lg bg-cyan px-3 py-2 text-sm font-medium text-navy-dark hover:bg-cyan-light">
+        <button className="shrink-0 rounded-lg bg-accent px-3 py-2 text-sm font-medium text-primary-dark hover:bg-accent-light">
           Join
         </button>
       </div>

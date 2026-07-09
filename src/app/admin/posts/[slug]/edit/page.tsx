@@ -12,7 +12,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ slug:
     <div>
       <AdminHeader />
       <main className="mx-auto max-w-3xl px-4 py-10">
-        <h1 className="text-xl font-bold text-navy">Edit Post</h1>
+        <h1 className="text-xl font-bold text-primary">Edit Post</h1>
         <div className="mt-6">
           <PostForm mode="edit" initialPost={post} />
         </div>

@@ -10,13 +10,18 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-slate-100 bg-navy-dark text-slate-300">
+    <footer className="border-t border-slate-100 bg-primary-dark text-slate-300">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <Image src="/logo.jpeg" alt={siteConfig.name} width={40} height={40} className="h-10 w-10 rounded-full" />
-              <span className="text-base font-bold text-white">TRIGON SERVICES</span>
+            <Link href="/">
+              <Image
+                src="/logo.jpeg"
+                alt={siteConfig.name}
+                width={56}
+                height={56}
+                className="h-14 w-14 rounded-full object-cover"
+              />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">{siteConfig.description}</p>
             <div className="mt-5">
@@ -29,7 +34,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5">
               {servicePillars.map((s) => (
                 <li key={s.slug}>
-                  <Link href={`/services/${s.slug}`} className="text-sm text-slate-400 hover:text-cyan-light">
+                  <Link href={`/services/${s.slug}`} className="text-sm text-slate-400 hover:text-accent-light">
                     {s.shortTitle}
                   </Link>
                 </li>
@@ -42,7 +47,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5">
               {industries.map((i) => (
                 <li key={i.slug}>
-                  <Link href={`/industries/${i.slug}`} className="text-sm text-slate-400 hover:text-cyan-light">
+                  <Link href={`/industries/${i.slug}`} className="text-sm text-slate-400 hover:text-accent-light">
                     {i.title}
                   </Link>
                 </li>
@@ -63,7 +68,7 @@ export default function Footer() {
                 { href: "/contact", label: "Contact Us" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-sm text-slate-400 hover:text-cyan-light">
+                  <Link href={l.href} className="text-sm text-slate-400 hover:text-accent-light">
                     {l.label}
                   </Link>
                 </li>
@@ -75,12 +80,12 @@ export default function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wide text-white">Get in Touch</h4>
             <ul className="mt-4 space-y-3 text-sm text-slate-400">
               <li>
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-cyan-light">
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-accent-light">
                   {siteConfig.email}
                 </a>
               </li>
               <li>
-                <a href={`tel:${siteConfig.phoneHref}`} className="hover:text-cyan-light">
+                <a href={`tel:${siteConfig.phoneHref}`} className="hover:text-accent-light">
                   {siteConfig.phone}
                 </a>
               </li>
@@ -95,13 +100,13 @@ export default function Footer() {
             &copy; {year} Trigon Services. All rights reserved.
           </p>
           <div className="flex gap-5 text-xs text-slate-500">
-            <Link href="/privacy-policy" className="hover:text-cyan-light">
+            <Link href="/privacy-policy" className="hover:text-accent-light">
               Privacy Policy
             </Link>
-            <Link href="/terms-of-use" className="hover:text-cyan-light">
+            <Link href="/terms-of-use" className="hover:text-accent-light">
               Terms of Use
             </Link>
-            <Link href="/refund-policy" className="hover:text-cyan-light">
+            <Link href="/refund-policy" className="hover:text-accent-light">
               Refund Policy
             </Link>
           </div>

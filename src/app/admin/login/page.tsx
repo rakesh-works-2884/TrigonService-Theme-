@@ -37,7 +37,7 @@ function LoginForm() {
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
       <form onSubmit={handleSubmit} className="w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-        <h1 className="text-lg font-bold text-navy">Trigon Admin</h1>
+        <h1 className="text-lg font-bold text-primary">Trigon Admin</h1>
         <p className="mt-1 text-sm text-slate-500">Sign in to manage the blog.</p>
 
         <label className="mt-6 block text-xs font-semibold uppercase tracking-wide text-slate-500">Password</label>
@@ -47,7 +47,7 @@ function LoginForm() {
           autoFocus
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+          className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
         />
 
         {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
@@ -55,7 +55,7 @@ function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          className="mt-6 w-full rounded-full bg-gradient-to-r from-navy to-cyan px-6 py-2.5 text-sm font-semibold text-white shadow-md transition hover:opacity-90 disabled:opacity-60"
+          className="mt-6 w-full rounded-full bg-gradient-to-r from-primary to-accent px-6 py-2.5 text-sm font-semibold text-white shadow-md transition hover:opacity-90 disabled:opacity-60"
         >
           {loading ? "Signing in..." : "Sign In"}
         </button>
