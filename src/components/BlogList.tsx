@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/blog-store";
+import TiltCard from "@/components/decor/TiltCard";
 
 export default function BlogList({ posts, categories }: { posts: BlogPost[]; categories: string[] }) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -56,7 +57,7 @@ export default function BlogList({ posts, categories }: { posts: BlogPost[]; cat
             href={`/blog/${post.slug}`}
             className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
           >
-            <div className="img-tilt relative h-40 w-full overflow-hidden">
+            <TiltCard className="relative h-40 w-full overflow-hidden" intensity={8}>
               {post.image ? (
                 <Image
                   src={post.image}
@@ -66,7 +67,7 @@ export default function BlogList({ posts, categories }: { posts: BlogPost[]; cat
                   className="object-cover transition duration-300 group-hover:scale-105"
                 />
               ) : (
-                <div className="flex h-full w-full items-center justify-center bg-primary">
+                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary to-accent">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-10 w-10 text-white/70">
                     <path d="M7 3h7l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z" />
                     <path d="M14 3v5h5" />
@@ -74,7 +75,7 @@ export default function BlogList({ posts, categories }: { posts: BlogPost[]; cat
                   </svg>
                 </div>
               )}
-            </div>
+            </TiltCard>
             <div className="p-6">
               <span className="text-xs font-semibold uppercase tracking-wide text-accent">{post.category}</span>
               <h3 className="mt-3 text-base font-semibold text-heading">{post.title}</h3>

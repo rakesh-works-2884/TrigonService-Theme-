@@ -2,16 +2,19 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import BlogList from "@/components/BlogList";
 import { getAllPosts } from "@/lib/blog-store";
-import { blogCategories } from "@/data/site";
+import { getSiteSettings } from "@/lib/site-settings-store";
+import { buildPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "Blog & Insights",
-  description:
-    "Policy updates, startup compliance checklists, GST & tax tips, risk management, and business growth insights from Trigon Services.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata("blog", {
+    title: "Blog & Insights",
+    description:
+      "Policy updates, startup compliance checklists, GST & tax tips, risk management, and business growth insights from Trigon Services.",
+  });
+}
 
 export default async function BlogPage() {
-  const posts = await getAllPosts();
+  const [posts, { blogCategories }] = await Promise.all([getAllPosts(), getSiteSettings()]);
 
   return (
     <div>

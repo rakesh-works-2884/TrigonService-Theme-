@@ -1,12 +1,17 @@
 import type { MetadataRoute } from "next";
-import { servicePillars } from "@/data/services";
-import { industries } from "@/data/industries";
+import { getAllServices } from "@/lib/services-store";
+import { getAllIndustries } from "@/lib/industries-store";
 import { getAllPosts } from "@/lib/blog-store";
+import { SITE_URL } from "@/lib/site-url";
 
-const baseUrl = "https://www.trigonservices.in";
+const baseUrl = SITE_URL;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogPosts = await getAllPosts();
+  const [servicePillars, industries, blogPosts] = await Promise.all([
+    getAllServices(),
+    getAllIndustries(),
+    getAllPosts(),
+  ]);
 
   const staticRoutes = [
     "",

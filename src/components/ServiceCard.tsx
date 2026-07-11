@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ServiceIcon from "@/components/ServiceIcon";
+import TiltCard from "@/components/decor/TiltCard";
 
 export default function ServiceCard({
   slug,
@@ -17,7 +18,7 @@ export default function ServiceCard({
 }) {
   return (
     <Link href={`/services/${slug}`} className="group relative block">
-      <div className="img-tilt relative h-48 overflow-hidden">
+      <TiltCard className="relative h-48 overflow-hidden" intensity={8}>
         <Image
           src={image}
           alt={imageAlt}
@@ -26,11 +27,11 @@ export default function ServiceCard({
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 origin-top scale-y-0 bg-black/30 transition-transform duration-500 group-hover:scale-y-100" />
-      </div>
+      </TiltCard>
 
       <div className="relative mx-5">
-        <span className="absolute -top-[70px] right-5 z-10 flex h-[70px] w-[70px] items-center justify-center bg-primary text-white transition-colors duration-500 group-hover:bg-white group-hover:text-primary">
-          <ServiceIcon slug={slug} className="h-8 w-8" />
+        <span className="absolute -top-[70px] right-5 z-10 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-white shadow-lg shadow-primary/30 transition-all duration-500 group-hover:-rotate-6 group-hover:bg-white group-hover:from-white group-hover:to-white group-hover:text-primary group-hover:shadow-xl">
+          <ServiceIcon slug={slug} className="h-8 w-8 transition-transform duration-500 group-hover:scale-110" />
         </span>
 
         <div className="relative overflow-hidden bg-white px-6 py-6 shadow-[0px_10px_60px_0px_rgba(0,0,0,0.07)] sm:px-[45px] sm:py-[25px]">

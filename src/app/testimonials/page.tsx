@@ -3,16 +3,21 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ImageShowcase from "@/components/decor/ImageShowcase";
 import FadeIn from "@/components/decor/FadeIn";
-import { testimonials } from "@/data/site";
-import { industries } from "@/data/industries";
+import { getSiteSettings } from "@/lib/site-settings-store";
+import { getAllIndustries } from "@/lib/industries-store";
 import { pexelsPhoto } from "@/lib/images";
+import { buildPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "Testimonials",
-  description: "Hear from founders, HR leaders, and operators who trust Trigon Services with their compliance.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata("testimonials", {
+    title: "Testimonials",
+    description: "Hear from founders, HR leaders, and operators who trust Trigon Services with their compliance.",
+  });
+}
 
-export default function TestimonialsPage() {
+export default async function TestimonialsPage() {
+  const [{ testimonials }, industries] = await Promise.all([getSiteSettings(), getAllIndustries()]);
+
   return (
     <div>
       <PageHero eyebrow="Testimonials" title="What Our Clients Say" />

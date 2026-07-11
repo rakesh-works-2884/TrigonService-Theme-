@@ -1,13 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import { servicePillars } from "@/data/services";
-import { industries } from "@/data/industries";
-import { siteConfig } from "@/data/site";
+import { getAllServices } from "@/lib/services-store";
+import { getAllIndustries } from "@/lib/industries-store";
+import { getSiteSettings } from "@/lib/site-settings-store";
 import NewsletterForm from "@/components/NewsletterForm";
 import SocialIcons from "@/components/SocialIcons";
 
-export default function Footer() {
+export default async function Footer() {
   const year = new Date().getFullYear();
+  const [services, industries, settings] = await Promise.all([
+    getAllServices(),
+    getAllIndustries(),
+    getSiteSettings(),
+  ]);
+  const { siteConfig } = settings;
 
   return (
     <footer className="border-t border-slate-100 bg-primary-dark text-slate-300">
@@ -25,14 +31,14 @@ export default function Footer() {
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">{siteConfig.description}</p>
             <div className="mt-5">
-              <SocialIcons />
+              <SocialIcons socials={siteConfig.socials} />
             </div>
           </div>
 
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wide text-white">Services</h4>
             <ul className="mt-4 space-y-2.5">
-              {servicePillars.map((s) => (
+              {services.map((s) => (
                 <li key={s.slug}>
                   <Link href={`/services/${s.slug}`} className="text-sm text-slate-400 hover:text-accent-light">
                     {s.shortTitle}

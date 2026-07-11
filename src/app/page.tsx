@@ -1,9 +1,12 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { servicePillars } from "@/data/services";
-import { trustStats, whyChooseUs, coreValues, team, blogCategories, siteConfig } from "@/data/site";
+import { getAllServices } from "@/lib/services-store";
+import { getAllIndustries } from "@/lib/industries-store";
+import { getSiteSettings } from "@/lib/site-settings-store";
 import { getAllPosts } from "@/lib/blog-store";
 import { pexelsPhoto } from "@/lib/images";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import ConsultationButton from "@/components/ConsultationButton";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
@@ -13,9 +16,26 @@ import ServiceIcon from "@/components/ServiceIcon";
 import WhyChooseIcon from "@/components/WhyChooseIcon";
 import TeamIcon from "@/components/TeamIcon";
 import ImageReveal from "@/components/decor/ImageReveal";
+import TiltCard from "@/components/decor/TiltCard";
+import IconBadge from "@/components/decor/IconBadge";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { siteConfig } = await getSiteSettings();
+  return buildPageMetadata("home", {
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    description: siteConfig.description,
+  });
+}
 
 export default async function Home() {
-  const blogPosts = (await getAllPosts()).slice(0, 3);
+  const [servicePillars, industries, settings, allPosts] = await Promise.all([
+    getAllServices(),
+    getAllIndustries(),
+    getSiteSettings(),
+    getAllPosts(),
+  ]);
+  const { siteConfig, trustStats, whyChooseUs, coreValues, team, blogCategories } = settings;
+  const blogPosts = allPosts.slice(0, 3);
 
   return (
     <div className="flex flex-col">
@@ -27,7 +47,7 @@ export default async function Home() {
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
           <ImageReveal className="relative mx-auto w-full max-w-md lg:mx-0">
             <div className="absolute -left-6 -top-6 h-full w-full bg-light" />
-            <div className="img-tilt relative aspect-[4/5] w-full overflow-hidden shadow-xl">
+            <TiltCard className="relative aspect-[4/5] w-full overflow-hidden shadow-xl">
               <Image
                 src={pexelsPhoto(8124232, 1000)}
                 alt="Trigon Services compliance team holding client documents"
@@ -35,8 +55,8 @@ export default async function Home() {
                 sizes="(min-width: 1024px) 400px, 80vw"
                 className="object-cover"
               />
-            </div>
-            <div className="img-tilt absolute -bottom-8 -right-6 z-10 h-32 w-44 overflow-hidden shadow-xl ring-4 ring-white sm:h-36 sm:w-52">
+            </TiltCard>
+            <TiltCard className="absolute -bottom-8 -right-6 z-10 h-32 w-44 overflow-hidden shadow-xl ring-4 ring-white sm:h-36 sm:w-52" intensity={8}>
               <Image
                 src={pexelsPhoto(33175650, 500)}
                 alt="Business handshake sealing a partnership"
@@ -44,7 +64,7 @@ export default async function Home() {
                 sizes="200px"
                 className="object-cover"
               />
-            </div>
+            </TiltCard>
             <div className="absolute -top-6 left-1/2 z-10 hidden -translate-x-1/2 bg-white px-6 py-4 text-center shadow-xl sm:block">
               <p className="text-2xl font-extrabold text-primary">{trustStats[0].value}</p>
               <p className="text-xs text-body">{trustStats[0].label}</p>
@@ -126,9 +146,11 @@ export default async function Home() {
         </div>
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {whyChooseUs.map((item) => (
-            <div key={item.title} className="text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <WhyChooseIcon iconKey={item.key} className="h-7 w-7" />
+            <div key={item.title} className="group text-center">
+              <div className="flex justify-center">
+                <IconBadge orbit size="lg">
+                  <WhyChooseIcon iconKey={item.key} className="h-7 w-7" />
+                </IconBadge>
               </div>
               <h3 className="mt-4 text-sm font-semibold text-heading">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-body">{item.description}</p>
@@ -140,14 +162,16 @@ export default async function Home() {
       {/* 6. Gradient CTA banner */}
       <section className="bg-gradient-to-r from-primary to-secondary py-20 text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
-          <ImageReveal className="img-tilt relative aspect-[4/3] w-full overflow-hidden shadow-2xl">
-            <Image
-              src={pexelsPhoto(3184292, 1000)}
-              alt="Founders reviewing a compliance checklist together"
-              fill
-              sizes="(min-width: 1024px) 500px, 90vw"
-              className="object-cover"
-            />
+          <ImageReveal>
+            <TiltCard className="relative aspect-[4/3] w-full overflow-hidden shadow-2xl">
+              <Image
+                src={pexelsPhoto(3184292, 1000)}
+                alt="Founders reviewing a compliance checklist together"
+                fill
+                sizes="(min-width: 1024px) 500px, 90vw"
+                className="object-cover"
+              />
+            </TiltCard>
           </ImageReveal>
           <div>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">We&apos;re Ready to Simplify Your Compliance!</h2>
@@ -189,7 +213,7 @@ export default async function Home() {
             </p>
           </div>
           <div className="mt-12">
-            <IndustriesShowcase />
+            <IndustriesShowcase industries={industries} />
           </div>
         </div>
       </section>
@@ -202,7 +226,7 @@ export default async function Home() {
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-heading sm:text-4xl">What They&apos;re Talking?</h2>
           </div>
           <div className="mt-14">
-            <TestimonialsCarousel />
+            <TestimonialsCarousel testimonials={settings.testimonials} />
           </div>
         </div>
       </section>
@@ -216,9 +240,11 @@ export default async function Home() {
         </div>
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member) => (
-            <div key={member.key} className="border border-light bg-white p-6 text-center shadow-sm">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white">
-                <TeamIcon iconKey={member.key} />
+            <div key={member.key} className="hover-tilt group border border-light bg-white p-6 text-center shadow-sm">
+              <div className="flex justify-center">
+                <IconBadge orbit size="lg">
+                  <TeamIcon iconKey={member.key} className="h-7 w-7" />
+                </IconBadge>
               </div>
               <h3 className="mt-4 text-sm font-semibold text-heading">{member.role}</h3>
               <p className="mt-2 text-sm leading-relaxed text-body">{member.description}</p>
@@ -230,14 +256,16 @@ export default async function Home() {
       {/* 11. Dark CTA band (video embed replaced with a static photo) */}
       <section className="bg-heading py-20 text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
-          <ImageReveal className="img-tilt relative aspect-[4/3] w-full overflow-hidden">
-            <Image
-              src={pexelsPhoto(3182773, 1000)}
-              alt="Compliance manager on a client call"
-              fill
-              sizes="(min-width: 1024px) 500px, 90vw"
-              className="object-cover"
-            />
+          <ImageReveal>
+            <TiltCard className="relative aspect-[4/3] w-full overflow-hidden">
+              <Image
+                src={pexelsPhoto(3182773, 1000)}
+                alt="Compliance manager on a client call"
+                fill
+                sizes="(min-width: 1024px) 500px, 90vw"
+                className="object-cover"
+              />
+            </TiltCard>
           </ImageReveal>
           <div>
             <span className="text-sm font-semibold uppercase tracking-wide text-secondary">Do You Need a Meeting?</span>
@@ -285,7 +313,7 @@ export default async function Home() {
                 href={`/blog/${post.slug}`}
                 className="group overflow-hidden bg-white shadow-sm transition hover:shadow-lg"
               >
-                <div className="img-tilt relative h-40 w-full overflow-hidden">
+                <TiltCard className="relative h-40 w-full overflow-hidden" intensity={8}>
                   {post.image ? (
                     <Image
                       src={post.image}
@@ -295,11 +323,11 @@ export default async function Home() {
                       className="object-cover transition duration-300 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-primary">
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary to-accent">
                       <ServiceIcon slug="legal-documentation" className="h-10 w-10 text-white/70" />
                     </div>
                   )}
-                </div>
+                </TiltCard>
                 <div className="p-6">
                   <span className="text-xs font-semibold uppercase tracking-wide text-primary">{post.category}</span>
                   <h3 className="mt-3 text-base font-semibold text-heading">{post.title}</h3>

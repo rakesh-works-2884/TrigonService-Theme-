@@ -1,8 +1,8 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import { siteConfig } from "@/data/site";
-import { servicePillars } from "@/data/services";
+import type { SiteConfig } from "@/lib/site-settings-store";
+import type { ServicePillar } from "@/lib/services-store";
 import { submitLead } from "@/lib/leads";
 
 type ConsultationContextValue = {
@@ -19,7 +19,15 @@ export function useConsultationModal() {
   return ctx;
 }
 
-export default function ConsultationModalProvider({ children }: { children: React.ReactNode }) {
+export default function ConsultationModalProvider({
+  children,
+  siteConfig,
+  services,
+}: {
+  children: React.ReactNode;
+  siteConfig: SiteConfig;
+  services: ServicePillar[];
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -138,7 +146,7 @@ export default function ConsultationModalProvider({ children }: { children: Reac
                     <option value="" disabled>
                       Service of interest
                     </option>
-                    {servicePillars.map((s) => (
+                    {services.map((s) => (
                       <option key={s.slug} value={s.title}>
                         {s.title}
                       </option>

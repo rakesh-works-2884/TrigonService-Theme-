@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ServiceCard from "@/components/ServiceCard";
-import { servicePillars } from "@/data/services";
+import { getAllServices } from "@/lib/services-store";
+import { buildPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Explore Trigon Services' full range of compliance services — business registration, tax filing, licenses, labour law, certifications, IPR, and more.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata("services", {
+    title: "Services",
+    description:
+      "Explore Trigon Services' full range of compliance services — business registration, tax filing, licenses, labour law, certifications, IPR, and more.",
+  });
+}
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const servicePillars = await getAllServices();
+
   return (
     <div>
       <PageHero

@@ -31,9 +31,9 @@ export default function HeroBars() {
 
   return (
     <div ref={ref} className="pointer-events-none absolute inset-0 z-10">
-      {/* Main diagonal color panel — solid gradient, not a tinted photo overlay, so hero text stays legible */}
+      {/* Main diagonal color panel — kept translucent so the background photo still reads through it */}
       <div
-        className="pointer-events-none absolute inset-y-0 left-0 w-[62%] bg-gradient-to-br from-primary via-primary to-secondary/90 sm:w-[58%]"
+        className="pointer-events-none absolute inset-y-0 left-0 w-[62%] bg-gradient-to-br from-primary/45 via-primary/45 to-secondary/40 sm:w-[58%]"
         style={{
           clipPath: "polygon(0 0, 100% 0, 78% 100%, 0% 100%)",
           opacity: visible ? 1 : 0,
@@ -44,7 +44,7 @@ export default function HeroBars() {
 
       {/* Top-right corner accent */}
       <div
-        className="pointer-events-none absolute right-0 top-0 hidden h-40 w-40 bg-gradient-to-bl from-secondary to-primary-light sm:block lg:h-56 lg:w-56"
+        className="pointer-events-none absolute right-0 top-0 hidden h-40 w-40 bg-gradient-to-bl from-secondary/45 to-primary-light/40 sm:block lg:h-56 lg:w-56"
         style={{
           clipPath: "polygon(100% 0, 100% 100%, 0 0)",
           opacity: visible ? 1 : 0,
@@ -60,11 +60,14 @@ export default function HeroBars() {
         aria-hidden="true"
         className="pointer-events-none absolute left-[40%] top-0 hidden h-2/3 w-auto select-none lg:block [filter:hue-rotate(-46deg)_saturate(1.15)_brightness(1.3)]"
         style={{
-          opacity: visible ? 0.5 : 0,
+          opacity: visible ? 0.3 : 0,
           transform: visible ? "translateX(0)" : "translateX(-56px)",
           ...transitionStyle(450),
         }}
       />
+
+      {/* Dark scrim under the text column only, so copy stays legible against a brighter photo */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-full bg-gradient-to-r from-heading/55 via-heading/15 to-transparent" />
     </div>
   );
 }

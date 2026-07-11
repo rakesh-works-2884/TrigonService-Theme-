@@ -2,15 +2,21 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import ImageShowcase from "@/components/decor/ImageShowcase";
-import { siteConfig } from "@/data/site";
+import { getSiteSettings } from "@/lib/site-settings-store";
+import { getAllServices } from "@/lib/services-store";
 import { pexelsPhoto } from "@/lib/images";
+import { buildPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "Get a Free Consultation",
-  description: "Request a free consultation with Trigon Services' compliance experts.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata("consultation", {
+    title: "Get a Free Consultation",
+    description: "Request a free consultation with Trigon Services' compliance experts.",
+  });
+}
 
-export default function ConsultationPage() {
+export default async function ConsultationPage() {
+  const [{ siteConfig }, services] = await Promise.all([getSiteSettings(), getAllServices()]);
+
   return (
     <div>
       <PageHero
@@ -27,7 +33,7 @@ export default function ConsultationPage() {
       />
 
       <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
-        <ContactForm />
+        <ContactForm services={services} />
         <p className="mt-6 text-center text-sm text-slate-500">
           Prefer to talk directly? Call us at{" "}
           <a href={`tel:${siteConfig.phoneHref}`} className="font-medium text-primary hover:text-accent">

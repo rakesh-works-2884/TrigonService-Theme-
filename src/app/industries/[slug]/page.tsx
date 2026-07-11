@@ -2,33 +2,47 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getIndustryBySlug, industries, challengesImage, challengesImageAlt } from "@/data/industries";
-import { servicePillars } from "@/data/services";
+import { getIndustryBySlug, getAllIndustries } from "@/lib/industries-store";
+import { getAllServices } from "@/lib/services-store";
+import { getSiteSettings } from "@/lib/site-settings-store";
 import PageHero from "@/components/PageHero";
 import ConsultationButton from "@/components/ConsultationButton";
 import ImageShowcase from "@/components/decor/ImageShowcase";
 import FadeIn from "@/components/decor/FadeIn";
+import TiltCard from "@/components/decor/TiltCard";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const industries = await getAllIndustries();
   return industries.map((i) => ({ slug: i.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const industry = getIndustryBySlug(slug);
+  const industry = await getIndustryBySlug(slug);
   if (!industry) return {};
   return {
-    title: industry.title,
-    description: industry.description,
+    title: industry.metaTitle || industry.title,
+    description: industry.metaDescription || industry.description,
+    openGraph: {
+      title: industry.ogTitle || industry.metaTitle || industry.title,
+      description: industry.ogDescription || industry.metaDescription || industry.description,
+      images: industry.ogImage || industry.image ? [industry.ogImage || industry.image] : undefined,
+    },
+    robots: industry.noindex ? { index: false, follow: false } : undefined,
   };
 }
 
 export default async function IndustryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const industry = getIndustryBySlug(slug);
+  const [industry, servicePillars, settings] = await Promise.all([
+    getIndustryBySlug(slug),
+    getAllServices(),
+    getSiteSettings(),
+  ]);
   if (!industry) notFound();
 
   const relatedServices = servicePillars.filter((s) => industry.keyServices.includes(s.title));
+  const { industriesChallengesImage, industriesChallengesImageAlt } = settings;
 
   return (
     <div>
@@ -66,15 +80,15 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
         <FadeIn delay={150}>
           <div className="mt-16 grid grid-cols-1 gap-10 rounded-3xl border border-slate-100 bg-warmgray p-6 sm:p-10 lg:grid-cols-2 lg:items-center">
-            <div className="img-tilt relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg">
+            <TiltCard className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg">
               <Image
-                src={challengesImage}
-                alt={challengesImageAlt}
+                src={industriesChallengesImage}
+                alt={industriesChallengesImageAlt}
                 fill
                 sizes="(min-width: 1024px) 500px, 100vw"
                 className="object-cover"
               />
-            </div>
+            </TiltCard>
             <div>
               <h2 className="text-xl font-bold text-heading">Common Challenges We Help {industry.title} Solve</h2>
               <ul className="mt-6 space-y-4">

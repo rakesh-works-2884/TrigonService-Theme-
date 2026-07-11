@@ -2,15 +2,21 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import { industries } from "@/data/industries";
+import TiltCard from "@/components/decor/TiltCard";
+import { getAllIndustries } from "@/lib/industries-store";
+import { buildPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "Industries We Serve",
-  description:
-    "Trigon Services supports startups, IT, manufacturing, healthcare, finance, education, retail, and service-based businesses with sector-specific compliance.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata("industries", {
+    title: "Industries We Serve",
+    description:
+      "Trigon Services supports startups, IT, manufacturing, healthcare, finance, education, retail, and service-based businesses with sector-specific compliance.",
+  });
+}
 
-export default function IndustriesPage() {
+export default async function IndustriesPage() {
+  const industries = await getAllIndustries();
+
   return (
     <div>
       <PageHero
@@ -27,7 +33,7 @@ export default function IndustriesPage() {
               href={`/industries/${i.slug}`}
               className="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg"
             >
-              <div className="img-tilt relative h-36 w-full overflow-hidden">
+              <TiltCard className="relative h-36 w-full overflow-hidden" intensity={8}>
                 <Image
                   src={i.image}
                   alt={i.imageAlt}
@@ -36,7 +42,7 @@ export default function IndustriesPage() {
                   className="object-cover transition duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/50 to-transparent" />
-              </div>
+              </TiltCard>
               <div className="p-6">
                 <h2 className="text-base font-semibold text-heading group-hover:text-accent">{i.title}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-slate-500">{i.description}</p>

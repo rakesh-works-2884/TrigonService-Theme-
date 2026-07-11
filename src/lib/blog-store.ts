@@ -1,8 +1,9 @@
 import "server-only";
 import fs from "fs/promises";
 import path from "path";
+import type { SeoFields } from "@/lib/seo-types";
 
-export type BlogPost = {
+export type BlogPost = SeoFields & {
   slug: string;
   title: string;
   category: string;

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getAllPosts, getPostBySlug } from "@/lib/blog-store";
 import ConsultationButton from "@/components/ConsultationButton";
+import TiltCard from "@/components/decor/TiltCard";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -14,7 +15,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
-  return { title: post.title, description: post.excerpt };
+  return {
+    title: post.metaTitle || post.title,
+    description: post.metaDescription || post.excerpt,
+    openGraph: {
+      title: post.ogTitle || post.metaTitle || post.title,
+      description: post.ogDescription || post.metaDescription || post.excerpt,
+      images: post.ogImage || post.image ? [post.ogImage || post.image!] : undefined,
+    },
+    robots: post.noindex ? { index: false, follow: false } : undefined,
+  };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -34,9 +44,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </p>
 
       {post.image && (
-        <div className="img-tilt relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-lg">
+        <TiltCard className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-lg">
           <Image src={post.image} alt={post.title} fill sizes="(min-width: 768px) 768px, 100vw" className="object-cover" priority />
-        </div>
+        </TiltCard>
       )}
 
       <div className="mt-8 space-y-5">

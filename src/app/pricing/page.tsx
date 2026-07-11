@@ -4,13 +4,16 @@ import ConsultationButton from "@/components/ConsultationButton";
 import ImageShowcase from "@/components/decor/ImageShowcase";
 import Accordion from "@/components/Accordion";
 import FadeIn from "@/components/decor/FadeIn";
-import { pricingPlans } from "@/data/pricing";
+import { getAllPricingPlans } from "@/lib/pricing-store";
 import { pexelsPhoto } from "@/lib/images";
+import { buildPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "Pricing & Packages",
-  description: "Transparent, startup-friendly pricing packages for Trigon Services' compliance services.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata("pricing", {
+    title: "Pricing & Packages",
+    description: "Transparent, startup-friendly pricing packages for Trigon Services' compliance services.",
+  });
+}
 
 const pricingFaq = [
   {
@@ -35,7 +38,9 @@ const pricingFaq = [
   },
 ];
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const pricingPlans = await getAllPricingPlans();
+
   return (
     <div>
       <PageHero

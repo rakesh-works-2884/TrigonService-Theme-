@@ -64,9 +64,16 @@ const icons: Record<string, React.ReactNode> = {
   ),
 };
 
+const DEFAULT_ICON = (
+  <>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 8v5" />
+    <path d="M12 16h.01" />
+  </>
+);
+
 export default function ServiceIcon({ slug, className = "h-5 w-5" }: { slug: string; className?: string }) {
-  const icon = icons[slug];
-  if (!icon) return null;
+  const icon = icons[slug] ?? DEFAULT_ICON;
   return (
     <svg
       viewBox="0 0 24 24"

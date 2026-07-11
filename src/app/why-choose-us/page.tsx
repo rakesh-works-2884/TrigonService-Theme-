@@ -4,16 +4,22 @@ import ConsultationButton from "@/components/ConsultationButton";
 import ImageShowcase from "@/components/decor/ImageShowcase";
 import WhyChooseIcon from "@/components/WhyChooseIcon";
 import FadeIn from "@/components/decor/FadeIn";
-import { whyChooseUs, processSteps } from "@/data/site";
+import IconBadge from "@/components/decor/IconBadge";
+import { getSiteSettings } from "@/lib/site-settings-store";
 import { pexelsPhoto } from "@/lib/images";
+import { buildPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "Why Choose Us",
-  description:
-    "Why businesses choose Trigon Services: one-stop compliance solutions, pan-India service, expert team, affordable pricing, and on-time delivery.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata("why-choose-us", {
+    title: "Why Choose Us",
+    description:
+      "Why businesses choose Trigon Services: one-stop compliance solutions, pan-India service, expert team, affordable pricing, and on-time delivery.",
+  });
+}
 
-export default function WhyChooseUsPage() {
+export default async function WhyChooseUsPage() {
+  const { whyChooseUs, processSteps } = await getSiteSettings();
+
   return (
     <div>
       <PageHero
@@ -32,9 +38,11 @@ export default function WhyChooseUsPage() {
         <FadeIn>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
             {whyChooseUs.map((item) => (
-              <div key={item.title} className="text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <WhyChooseIcon iconKey={item.key} className="h-7 w-7" />
+              <div key={item.title} className="group text-center">
+                <div className="flex justify-center">
+                  <IconBadge orbit size="lg">
+                    <WhyChooseIcon iconKey={item.key} className="h-7 w-7" />
+                  </IconBadge>
                 </div>
                 <h3 className="mt-4 text-sm font-semibold text-heading">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">{item.description}</p>

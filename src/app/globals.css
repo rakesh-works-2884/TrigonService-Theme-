@@ -23,10 +23,19 @@
   --color-warmgray-dark: #56636f;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-catamaran), Arial, Helvetica, sans-serif;
+}
+
+a,
+button {
+  transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
 }
 
 /* Theme-accurate button: 5px radius, not pill-shaped.
@@ -34,18 +43,35 @@ body {
    always win in the cascade without needing !important on every override. */
 @layer components {
   .btn-brand {
+    position: relative;
     display: inline-block;
+    overflow: hidden;
     border-radius: 5px;
     padding: 12px 25px;
     line-height: 1.5em;
     font-weight: 600;
     background-color: var(--color-primary);
     color: #fff;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
   }
 
   .btn-brand:hover {
     background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -10px rgba(0, 113, 181, 0.5);
+  }
+
+  .btn-brand::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.35) 48%, transparent 66%);
+    transform: translateX(-120%);
+  }
+
+  .btn-brand:hover::after {
+    transform: translateX(120%);
+    transition: transform 0.75s ease;
   }
 
   .btn-brand-outline {
@@ -56,12 +82,19 @@ body {
     font-weight: 600;
     border: 1px solid rgba(255, 255, 255, 0.4);
     color: #fff;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.25s ease, border-color 0.25s ease;
   }
 
   .btn-brand-outline:hover {
     background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
   }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes float-y {
@@ -87,24 +120,153 @@ body {
 
 /* Subtle lift for plain content cards not covered by the theme's parsed widget specs */
 .hover-tilt {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .hover-tilt:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -20px rgba(29, 23, 41, 0.25);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 24px 48px -20px rgba(0, 113, 181, 0.3);
 }
 
-/* 3D tilt for photo/image containers site-wide */
+/* 3D tilt for photo/image containers site-wide, with a glossy light sweep on hover */
 .img-tilt {
+  position: relative;
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  isolation: isolate;
+}
+
+.img-tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.4) 42%, transparent 64%);
+  transform: translateX(-130%) skewX(-15deg);
+  opacity: 0;
+}
+
+.img-tilt:hover {
+  transform: perspective(1200px) rotateX(6deg) rotateY(-8deg) scale(1.045) translateY(-6px);
+  box-shadow: 0 34px 64px -18px rgba(0, 113, 181, 0.45), 0 12px 24px -12px rgba(15, 31, 46, 0.35);
+}
+
+.img-tilt:hover::after {
+  opacity: 1;
+  transform: translateX(130%) skewX(-15deg);
+  transition: transform 0.9s ease, opacity 0.9s ease;
+}
+
+/* Mouse-tracked 3D tilt card (TiltCard.tsx) — real pointer-driven rotation + a glare
+   that follows the cursor, rather than a fixed hover angle. */
+.tilt-card {
+  position: relative;
+  --rx: 0deg;
+  --ry: 0deg;
+  --gx: 50%;
+  --gy: 50%;
+  transform: perspective(1200px) rotateX(var(--rx)) rotateY(var(--ry)) scale3d(1, 1, 1);
+  transition: transform 0.18s ease-out, box-shadow 0.35s ease;
   transform-style: preserve-3d;
   will-change: transform;
 }
 
-.img-tilt:hover {
-  transform: perspective(1000px) rotateX(5deg) rotateY(-6deg) scale(1.035) translateY(-4px);
-  box-shadow: 0 30px 60px -20px rgba(15, 31, 46, 0.4);
+.tilt-card:hover {
+  box-shadow: 0 44px 80px -22px rgba(0, 113, 181, 0.5), 0 18px 36px -18px rgba(15, 31, 46, 0.4);
+}
+
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--gx) var(--gy), rgba(255, 255, 255, 0.65), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  mix-blend-mode: overlay;
+}
+
+.tilt-card:hover .tilt-glare {
+  opacity: 1;
+}
+
+/* Rotating conic-gradient halo behind icon badges — a slow ambient spin at rest,
+   brightening on hover. Applied via IconBadge's `orbit` prop. */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.icon-orbit::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, var(--color-primary), var(--color-accent), var(--color-secondary), var(--color-primary));
+  opacity: 0.4;
+  filter: blur(7px);
+  animation: spin-slow 7s linear infinite;
+}
+
+.group:hover .icon-orbit::before {
+  opacity: 0.85;
+  filter: blur(9px);
+}
+
+/* Animated gradient text, used for hero/heading accents */
+@keyframes gradient-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.text-gradient-animated {
+  background: linear-gradient(90deg, var(--color-accent-light), var(--color-secondary), var(--color-primary-light), var(--color-accent-light));
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 6s ease infinite;
+}
+
+/* Nav link underline that grows from the center on hover */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: calc(100% - 24px);
+}
+
+/* Mega menu slide/fade, always mounted and toggled via a class for a smooth exit too */
+.mega-menu {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mega-menu.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* Slow continuous zoom for full-bleed hero photography */
@@ -133,7 +295,11 @@ body {
   .img-tilt,
   .img-tilt:hover,
   .hero-kenburns,
-  .img-pop {
+  .img-pop,
+  .tilt-card,
+  .tilt-card:hover,
+  .icon-orbit::before,
+  .text-gradient-animated {
     animation: none;
     transition: none;
     transform: none;

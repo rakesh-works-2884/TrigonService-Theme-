@@ -3,27 +3,36 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { blogCategories } from "@/data/site";
 import type { BlogPost } from "@/lib/blog-store";
+import SeoFieldset, { type SeoFieldsValue } from "@/components/admin/SeoFieldset";
 
 type Props = {
   mode: "create" | "edit";
   initialPost?: BlogPost;
+  categories: string[];
 };
 
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
 
-export default function PostForm({ mode, initialPost }: Props) {
+export default function PostForm({ mode, initialPost, categories }: Props) {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [title, setTitle] = useState(initialPost?.title ?? "");
-  const [category, setCategory] = useState(initialPost?.category ?? blogCategories[0]);
+  const [category, setCategory] = useState(initialPost?.category ?? categories[0] ?? "");
   const [excerpt, setExcerpt] = useState(initialPost?.excerpt ?? "");
   const [date, setDate] = useState(initialPost?.date ?? todayISO());
   const [bodyText, setBodyText] = useState(initialPost?.body.join("\n\n") ?? "");
   const [image, setImage] = useState(initialPost?.image ?? "");
+  const [seo, setSeo] = useState<SeoFieldsValue>({
+    metaTitle: initialPost?.metaTitle ?? "",
+    metaDescription: initialPost?.metaDescription ?? "",
+    ogTitle: initialPost?.ogTitle ?? "",
+    ogDescription: initialPost?.ogDescription ?? "",
+    ogImage: initialPost?.ogImage ?? "",
+    noindex: initialPost?.noindex ?? false,
+  });
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
   const [error, setError] = useState("");
@@ -68,7 +77,20 @@ export default function PostForm({ mode, initialPost }: Props) {
       return;
     }
 
-    const payload = { title, category, excerpt, date, body, image: image || undefined };
+    const payload = {
+      title,
+      category,
+      excerpt,
+      date,
+      body,
+      image: image || undefined,
+      metaTitle: seo.metaTitle || undefined,
+      metaDescription: seo.metaDescription || undefined,
+      ogTitle: seo.ogTitle || undefined,
+      ogDescription: seo.ogDescription || undefined,
+      ogImage: seo.ogImage || undefined,
+      noindex: seo.noindex || undefined,
+    };
 
     try {
       const res =
@@ -156,7 +178,7 @@ export default function PostForm({ mode, initialPost }: Props) {
             className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
           <datalist id="admin-categories">
-            {blogCategories.map((c) => (
+            {categories.map((c) => (
               <option key={c} value={c} />
             ))}
           </datalist>
@@ -196,6 +218,8 @@ export default function PostForm({ mode, initialPost }: Props) {
           className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm leading-relaxed focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
         />
       </div>
+
+      <SeoFieldset value={seo} onChange={setSeo} />
 
       {error && <p className="text-sm text-red-600">{error}</p>}
 

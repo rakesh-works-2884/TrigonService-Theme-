@@ -2,18 +2,25 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import ConsultationButton from "@/components/ConsultationButton";
-import { coreValues, team } from "@/data/site";
+import { getSiteSettings } from "@/lib/site-settings-store";
 import { pexelsPhoto } from "@/lib/images";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import TeamIcon from "@/components/TeamIcon";
 import ImageReveal from "@/components/decor/ImageReveal";
+import TiltCard from "@/components/decor/TiltCard";
+import IconBadge from "@/components/decor/IconBadge";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Learn about Trigon Services' mission, vision, core values, and the team of lawyers, CAs, and CS professionals behind our compliance work.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata("about", {
+    title: "About Us",
+    description:
+      "Learn about Trigon Services' mission, vision, core values, and the team of lawyers, CAs, and CS professionals behind our compliance work.",
+  });
+}
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const { coreValues, team } = await getSiteSettings();
+
   return (
     <div>
       <PageHero
@@ -26,7 +33,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
           <ImageReveal className="relative mx-auto w-full max-w-md lg:mx-0">
             <div className="absolute -left-6 -top-6 h-full w-full rounded-sm bg-light" />
-            <div className="img-tilt relative aspect-[4/5] w-full overflow-hidden rounded-sm shadow-xl">
+            <TiltCard className="relative aspect-[4/5] w-full overflow-hidden rounded-sm shadow-xl">
               <Image
                 src={pexelsPhoto(8124232, 1000)}
                 alt="Trigon Services compliance team holding client documents"
@@ -34,8 +41,8 @@ export default function AboutPage() {
                 sizes="(min-width: 1024px) 400px, 80vw"
                 className="object-cover"
               />
-            </div>
-            <div className="img-tilt absolute -bottom-8 -right-6 z-10 h-32 w-44 overflow-hidden rounded-sm shadow-xl ring-4 ring-white sm:h-36 sm:w-52">
+            </TiltCard>
+            <TiltCard className="absolute -bottom-8 -right-6 z-10 h-32 w-44 overflow-hidden rounded-sm shadow-xl ring-4 ring-white sm:h-36 sm:w-52" intensity={8}>
               <Image
                 src={pexelsPhoto(33175650, 500)}
                 alt="Business handshake sealing a partnership"
@@ -43,7 +50,7 @@ export default function AboutPage() {
                 sizes="200px"
                 className="object-cover"
               />
-            </div>
+            </TiltCard>
             <div className="absolute -top-6 left-1/2 z-10 hidden -translate-x-1/2 rounded-sm bg-white px-6 py-4 text-center shadow-xl sm:block">
               <p className="text-2xl font-extrabold text-primary">10+ Yrs</p>
               <p className="text-xs text-body">Combined Team Experience</p>
@@ -75,9 +82,16 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold tracking-tight text-heading sm:text-4xl">Our Core Values</h2>
           </div>
           <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {coreValues.map((v) => (
-              <div key={v.title} className="border border-light bg-white p-6 text-center shadow-sm">
-                <h3 className="text-sm font-semibold text-heading">{v.title}</h3>
+            {coreValues.map((v, idx) => (
+              <div
+                key={v.title}
+                className="hover-tilt group relative overflow-hidden border border-light bg-white p-6 text-center shadow-sm"
+              >
+                <span className="absolute left-0 top-0 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-primary to-accent transition-transform duration-500 group-hover:scale-x-100" />
+                <span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-accent/15 text-sm font-bold text-primary">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 text-sm font-semibold text-heading">{v.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">{v.description}</p>
               </div>
             ))}
@@ -94,9 +108,11 @@ export default function AboutPage() {
         </div>
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member) => (
-            <div key={member.key} className="border border-light bg-white p-6 text-center shadow-sm">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white">
-                <TeamIcon iconKey={member.key} />
+            <div key={member.key} className="hover-tilt group border border-light bg-white p-6 text-center shadow-sm">
+              <div className="flex justify-center">
+                <IconBadge orbit size="lg">
+                  <TeamIcon iconKey={member.key} className="h-7 w-7" />
+                </IconBadge>
               </div>
               <h3 className="mt-4 text-sm font-semibold text-heading">{member.role}</h3>
               <p className="mt-2 text-sm leading-relaxed text-body">{member.description}</p>

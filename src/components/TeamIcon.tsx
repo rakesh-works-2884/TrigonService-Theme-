@@ -34,9 +34,16 @@ const icons: Record<string, React.ReactNode> = {
   ),
 };
 
+const DEFAULT_ICON = (
+  <>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 8v5" />
+    <path d="M12 16h.01" />
+  </>
+);
+
 export default function TeamIcon({ iconKey, className = "h-7 w-7" }: { iconKey: string; className?: string }) {
-  const icon = icons[iconKey];
-  if (!icon) return null;
+  const icon = icons[iconKey] ?? DEFAULT_ICON;
   return (
     <svg
       viewBox="0 0 24 24"

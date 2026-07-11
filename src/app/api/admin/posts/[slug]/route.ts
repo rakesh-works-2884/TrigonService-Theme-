@@ -21,6 +21,12 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     date: body.date,
     body: body.body,
     image: body.image || undefined,
+    metaTitle: body.metaTitle || undefined,
+    metaDescription: body.metaDescription || undefined,
+    ogTitle: body.ogTitle || undefined,
+    ogDescription: body.ogDescription || undefined,
+    ogImage: body.ogImage || undefined,
+    noindex: Boolean(body.noindex),
   });
 
   if (!post) return NextResponse.json({ error: "Not found" }, { status: 404 });

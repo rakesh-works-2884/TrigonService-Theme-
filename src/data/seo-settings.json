@@ -1,0 +1,12 @@
+[
+  { "pageKey": "home" },
+  { "pageKey": "about" },
+  { "pageKey": "services" },
+  { "pageKey": "industries" },
+  { "pageKey": "pricing" },
+  { "pageKey": "why-choose-us" },
+  { "pageKey": "testimonials" },
+  { "pageKey": "contact" },
+  { "pageKey": "consultation" },
+  { "pageKey": "blog" }
+]

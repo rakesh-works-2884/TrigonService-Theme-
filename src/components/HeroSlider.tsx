@@ -76,10 +76,10 @@ export default function HeroSlider() {
             className="max-w-xl transition-opacity duration-400 ease-out"
             style={{ opacity: textVisible ? 1 : 0 }}
           >
-            <span className="inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-accent-light">
+            <span className="inline-block rounded-full bg-slate-600/70 px-4 py-1.5 text-xs font-semibold tracking-wide text-white shadow-sm backdrop-blur-sm">
               {active.subtitle}
             </span>
-            <h1 className="mt-5 text-4xl font-extrabold uppercase leading-[1.15] text-white sm:text-5xl">
+            <h1 className="mt-5 text-4xl font-extrabold leading-[1.15] text-white drop-shadow-md sm:text-5xl">
               {active.titleMain} <span className="text-secondary">&amp;</span>
               <br />
               {active.titleSecond}

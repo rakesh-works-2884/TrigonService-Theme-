@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
-import { siteConfig } from "@/data/site";
+import { getSiteSettings } from "@/lib/site-settings-store";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How Trigon Services collects, uses, and protects your personal information.",
 };
 
-export default function PrivacyPolicyPage() {
+export default async function PrivacyPolicyPage() {
+  const { siteConfig } = await getSiteSettings();
+
   return (
     <div>
       <PageHero eyebrow="Legal" title="Privacy Policy" />

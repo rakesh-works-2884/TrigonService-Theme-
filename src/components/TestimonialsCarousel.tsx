@@ -2,12 +2,12 @@
 
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { testimonials } from "@/data/site";
+import type { Testimonial } from "@/lib/site-settings-store";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function TestimonialsCarousel() {
+export default function TestimonialsCarousel({ testimonials }: { testimonials: Testimonial[] }) {
   return (
     <div className="theme-swiper relative mx-auto max-w-3xl px-12">
       <Swiper

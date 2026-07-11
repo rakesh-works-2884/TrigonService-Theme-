@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
-import { siteConfig } from "@/data/site";
+import { getSiteSettings } from "@/lib/site-settings-store";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
   description: "Terms and conditions governing the use of Trigon Services' website and services.",
 };
 
-export default function TermsOfUsePage() {
+export default async function TermsOfUsePage() {
+  const { siteConfig } = await getSiteSettings();
+
   return (
     <div>
       <PageHero eyebrow="Legal" title="Terms of Use" />

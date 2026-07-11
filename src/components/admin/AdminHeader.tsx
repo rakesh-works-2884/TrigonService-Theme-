@@ -15,22 +15,31 @@ export default function AdminHeader() {
     router.refresh();
   };
 
+  const links = [
+    { href: "/admin", label: "Posts" },
+    { href: "/admin/services", label: "Services" },
+    { href: "/admin/industries", label: "Industries" },
+    { href: "/admin/pricing", label: "Pricing" },
+    { href: "/admin/settings", label: "Site Settings" },
+    { href: "/admin/seo", label: "SEO" },
+  ];
+
   return (
     <header className="border-b border-slate-200 bg-white">
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-3">
         <Link href="/admin" className="text-sm font-bold text-primary">
           Trigon Admin
         </Link>
-        <nav className="flex items-center gap-2">
-          <Link href="/admin" className="rounded-full px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-warmgray">
-            Posts
-          </Link>
-          <Link
-            href="/admin/posts/new"
-            className="rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-white hover:bg-primary-dark"
-          >
-            + New Post
-          </Link>
+        <nav className="flex flex-wrap items-center gap-1">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded-full px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-warmgray"
+            >
+              {link.label}
+            </Link>
+          ))}
           <button
             onClick={handleLogout}
             disabled={loggingOut}

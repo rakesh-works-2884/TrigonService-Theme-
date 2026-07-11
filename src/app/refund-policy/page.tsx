@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
-import { siteConfig } from "@/data/site";
+import { getSiteSettings } from "@/lib/site-settings-store";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
   description: "Trigon Services' refund and cancellation policy for compliance and advisory engagements.",
 };
 
-export default function RefundPolicyPage() {
+export default async function RefundPolicyPage() {
+  const { siteConfig } = await getSiteSettings();
+
   return (
     <div>
       <PageHero eyebrow="Legal" title="Refund Policy" />

@@ -21,6 +21,12 @@ export async function POST(request: NextRequest) {
     body: body.body,
     slug: body.slug,
     image: body.image || undefined,
+    metaTitle: body.metaTitle || undefined,
+    metaDescription: body.metaDescription || undefined,
+    ogTitle: body.ogTitle || undefined,
+    ogDescription: body.ogDescription || undefined,
+    ogImage: body.ogImage || undefined,
+    noindex: Boolean(body.noindex),
   });
 
   revalidatePath("/blog");
