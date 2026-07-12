@@ -47,10 +47,10 @@ export default async function Home() {
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
           <ImageReveal className="relative mx-auto w-full max-w-md lg:mx-0">
             <div className="absolute -left-6 -top-6 h-full w-full bg-light" />
-            <TiltCard className="relative aspect-[4/5] w-full overflow-hidden shadow-xl">
+            <TiltCard className="relative aspect-[2/3] w-full overflow-hidden shadow-xl">
               <Image
-                src={pexelsPhoto(8124232, 1000)}
-                alt="Trigon Services compliance team holding client documents"
+                src="/about/partner-main.jpg"
+                alt="Trigon Services team reviewing compliance reports together"
                 fill
                 sizes="(min-width: 1024px) 400px, 80vw"
                 className="object-cover"
@@ -58,8 +58,8 @@ export default async function Home() {
             </TiltCard>
             <TiltCard className="absolute -bottom-8 -right-6 z-10 h-32 w-44 overflow-hidden shadow-xl ring-4 ring-white sm:h-36 sm:w-52" intensity={8}>
               <Image
-                src={pexelsPhoto(33175650, 500)}
-                alt="Business handshake sealing a partnership"
+                src="/about/partner-inset.jpg"
+                alt="Team member working on a laptop"
                 fill
                 sizes="200px"
                 className="object-cover"

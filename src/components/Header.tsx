@@ -34,8 +34,23 @@ export default function Header({ siteConfig, services }: { siteConfig: SiteConfi
   }, [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
+    let ticking = false;
+    // Hysteresis (different on/off thresholds) stops the header from flickering
+    // when scroll position hovers right at a single boundary value.
+    const evaluate = () => {
+      ticking = false;
+      setScrolled((prev) => {
+        const y = window.scrollY;
+        if (prev) return y > 8;
+        return y > 32;
+      });
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(evaluate);
+    };
+    evaluate();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
