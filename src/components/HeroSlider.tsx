@@ -11,7 +11,7 @@ import "swiper/css";
 const slides = [
   {
     photo: "/hero/bg-revslider-home1-01.jpg",
-    alt: "Compliance team reviewing documents in a meeting",
+    alt: "Trigon Services — your trusted compliance partner",
     subtitle: "India's End-to-End Compliance Partner",
     titleMain: "Business Registration",
     titleSecond: "Compliance",
@@ -22,7 +22,7 @@ const slides = [
   },
   {
     photo: "/hero/bg-revslider-home1-02.jpg",
-    alt: "Professional working through tax and GST filings",
+    alt: "Desk with tax documents, calculator, and GST filing reminders",
     subtitle: "Stay Audit-Ready, Always",
     titleMain: "Tax Filing",
     titleSecond: "Regulatory Compliance",
@@ -32,7 +32,7 @@ const slides = [
   },
   {
     photo: "/hero/bg-revslider-home1-03.jpg",
-    alt: "Business licenses and certification documents",
+    alt: "Business licenses and registration certificates laid out on a desk",
     subtitle: "Trusted by 500+ Businesses",
     titleMain: "Licenses",
     titleSecond: "Certifications",
