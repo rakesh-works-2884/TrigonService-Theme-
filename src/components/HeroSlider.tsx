@@ -6,46 +6,15 @@ import Link from "next/link";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HeroBars from "@/components/HeroBars";
+import type { HeroSlide } from "@/lib/site-images-store";
 import "swiper/css";
 
-const slides = [
-  {
-    photo: "/hero/bg-revslider-home1-01.jpg",
-    alt: "Compliance team reviewing documents in a meeting",
-    subtitle: "India's End-to-End Compliance Partner",
-    titleMain: "Business Registration",
-    titleSecond: "Compliance",
-    description:
-      "From incorporation to ongoing filings, we handle the full lifecycle of business compliance under one roof.",
-    cta: "Get Free Consultation",
-    href: "/consultation",
-  },
-  {
-    photo: "/hero/bg-revslider-home1-02.jpg",
-    alt: "Professional working through tax and GST filings",
-    subtitle: "Stay Audit-Ready, Always",
-    titleMain: "Tax Filing",
-    titleSecond: "Regulatory Compliance",
-    description: "GST returns, income tax, TDS, and bookkeeping — tracked on a compliance calendar so nothing slips.",
-    cta: "Explore Services",
-    href: "/services",
-  },
-  {
-    photo: "/hero/bg-revslider-home1-03.jpg",
-    alt: "Business licenses and certification documents",
-    subtitle: "Trusted by 500+ Businesses",
-    titleMain: "Licenses",
-    titleSecond: "Certifications",
-    description: "FSSAI, ISO, trademark, and every sector-specific license your business needs to operate legally.",
-    cta: "View Pricing",
-    href: "/pricing",
-  },
-];
-
-export default function HeroSlider() {
+export default function HeroSlider({ slides }: { slides: HeroSlide[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [textVisible, setTextVisible] = useState(true);
   const active = slides[activeIndex];
+
+  if (!active) return null;
 
   return (
     <section className="relative h-[620px] overflow-hidden bg-heading sm:h-[680px] lg:h-[760px]">
@@ -62,8 +31,8 @@ export default function HeroSlider() {
         className="h-full"
       >
         {slides.map((slide, index) => (
-          <SwiperSlide key={slide.titleMain}>
-            <Image src={slide.photo} alt={slide.alt} fill priority={index === 0} className="object-cover" />
+          <SwiperSlide key={`${slide.image}-${index}`}>
+            <Image src={slide.image} alt={slide.imageAlt} fill priority={index === 0} className="object-cover" />
           </SwiperSlide>
         ))}
       </Swiper>

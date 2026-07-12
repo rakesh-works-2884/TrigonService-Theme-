@@ -21,6 +21,7 @@ export default function AdminHeader() {
     { href: "/admin/industries", label: "Industries" },
     { href: "/admin/pricing", label: "Pricing" },
     { href: "/admin/settings", label: "Site Settings" },
+    { href: "/admin/site-images", label: "Images" },
     { href: "/admin/seo", label: "SEO" },
   ];
 

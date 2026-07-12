@@ -1,0 +1,56 @@
+{
+  "heroSlides": [
+    {
+      "image": "/hero/bg-revslider-home1-01.jpg",
+      "imageAlt": "Trigon Services — your trusted compliance partner",
+      "subtitle": "Welcome to Trigon Services",
+      "titleMain": "Expertise",
+      "titleSecond": "Technology",
+      "description": "Legal expertise, industry knowledge, and technology — combined to keep your business fully compliant.",
+      "cta": "Get Free Consultation",
+      "href": "/consultation"
+    },
+    {
+      "image": "/hero/bg-revslider-home1-02.jpg",
+      "imageAlt": "Desk with tax documents, calculator, and GST filing reminders",
+      "subtitle": "Never Miss a Filing Deadline",
+      "titleMain": "GST",
+      "titleSecond": "Tax Return Filing",
+      "description": "GST returns, income tax, and TDS filings tracked on a compliance calendar so nothing slips through.",
+      "cta": "Explore Services",
+      "href": "/services/tax-registration-filing"
+    },
+    {
+      "image": "/hero/bg-revslider-home1-03.jpg",
+      "imageAlt": "Business licenses and registration certificates laid out on a desk",
+      "subtitle": "Every License, Fully Sorted",
+      "titleMain": "Business Licenses",
+      "titleSecond": "Registrations",
+      "description": "Shop & establishment, trade, factory, fire NOC, and FSSAI — we handle the paperwork end-to-end.",
+      "cta": "View Services",
+      "href": "/services/government-business-licenses"
+    }
+  ],
+  "homeAboutMainImage": "https://images.pexels.com/photos/8124232/pexels-photo-8124232.jpeg?auto=compress&cs=tinysrgb&w=1000",
+  "homeAboutMainImageAlt": "Trigon Services compliance team holding client documents",
+  "homeAboutInsetImage": "https://images.pexels.com/photos/33175650/pexels-photo-33175650.jpeg?auto=compress&cs=tinysrgb&w=500",
+  "homeAboutInsetImageAlt": "Business handshake sealing a partnership",
+  "homeCtaBannerImage": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1000",
+  "homeCtaBannerImageAlt": "Founders reviewing a compliance checklist together",
+  "homeDarkCtaImage": "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1000",
+  "homeDarkCtaImageAlt": "Compliance manager on a client call",
+  "aboutMainImage": "https://images.pexels.com/photos/8124232/pexels-photo-8124232.jpeg?auto=compress&cs=tinysrgb&w=1000",
+  "aboutMainImageAlt": "Trigon Services compliance team holding client documents",
+  "aboutInsetImage": "https://images.pexels.com/photos/33175650/pexels-photo-33175650.jpeg?auto=compress&cs=tinysrgb&w=500",
+  "aboutInsetImageAlt": "Business handshake sealing a partnership",
+  "whyChooseUsShowcaseImage": "https://images.pexels.com/photos/7644014/pexels-photo-7644014.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "whyChooseUsShowcaseImageAlt": "Team member presenting during a work meeting",
+  "pricingShowcaseImage": "https://images.pexels.com/photos/8353807/pexels-photo-8353807.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "pricingShowcaseImageAlt": "Compliance advisor reviewing a service plan",
+  "testimonialsShowcaseImage": "https://images.pexels.com/photos/36729674/pexels-photo-36729674.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "testimonialsShowcaseImageAlt": "Happy clients in a friendly meeting with their advisor",
+  "consultationShowcaseImage": "https://images.pexels.com/photos/6953779/pexels-photo-6953779.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "consultationShowcaseImageAlt": "Compliance expert discussing business needs with a client",
+  "contactSidebarImage": "https://images.pexels.com/photos/8297445/pexels-photo-8297445.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "contactSidebarImageAlt": "Trigon Services team reviewing compliance documents together"
+}

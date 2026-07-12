@@ -5,7 +5,7 @@ import { getAllServices } from "@/lib/services-store";
 import { getAllIndustries } from "@/lib/industries-store";
 import { getSiteSettings } from "@/lib/site-settings-store";
 import { getAllPosts } from "@/lib/blog-store";
-import { pexelsPhoto } from "@/lib/images";
+import { getSiteImages } from "@/lib/site-images-store";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import ConsultationButton from "@/components/ConsultationButton";
 import ServiceCard from "@/components/ServiceCard";
@@ -28,11 +28,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const [servicePillars, industries, settings, allPosts] = await Promise.all([
+  const [servicePillars, industries, settings, allPosts, siteImages] = await Promise.all([
     getAllServices(),
     getAllIndustries(),
     getSiteSettings(),
     getAllPosts(),
+    getSiteImages(),
   ]);
   const { siteConfig, trustStats, whyChooseUs, coreValues, team, blogCategories } = settings;
   const blogPosts = allPosts.slice(0, 3);
@@ -40,7 +41,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col">
       {/* 1. Hero */}
-      <HeroSlider />
+      <HeroSlider slides={siteImages.heroSlides} />
 
       {/* 2. About / Intro */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
@@ -49,8 +50,8 @@ export default async function Home() {
             <div className="absolute -left-6 -top-6 h-full w-full bg-light" />
             <TiltCard className="relative aspect-[4/5] w-full overflow-hidden shadow-xl">
               <Image
-                src={pexelsPhoto(8124232, 1000)}
-                alt="Trigon Services compliance team holding client documents"
+                src={siteImages.homeAboutMainImage}
+                alt={siteImages.homeAboutMainImageAlt}
                 fill
                 sizes="(min-width: 1024px) 400px, 80vw"
                 className="object-cover"
@@ -58,8 +59,8 @@ export default async function Home() {
             </TiltCard>
             <TiltCard className="absolute -bottom-8 -right-6 z-10 h-32 w-44 overflow-hidden shadow-xl ring-4 ring-white sm:h-36 sm:w-52" intensity={8}>
               <Image
-                src={pexelsPhoto(33175650, 500)}
-                alt="Business handshake sealing a partnership"
+                src={siteImages.homeAboutInsetImage}
+                alt={siteImages.homeAboutInsetImageAlt}
                 fill
                 sizes="200px"
                 className="object-cover"
@@ -165,8 +166,8 @@ export default async function Home() {
           <ImageReveal>
             <TiltCard className="relative aspect-[4/3] w-full overflow-hidden shadow-2xl">
               <Image
-                src={pexelsPhoto(3184292, 1000)}
-                alt="Founders reviewing a compliance checklist together"
+                src={siteImages.homeCtaBannerImage}
+                alt={siteImages.homeCtaBannerImageAlt}
                 fill
                 sizes="(min-width: 1024px) 500px, 90vw"
                 className="object-cover"
@@ -259,8 +260,8 @@ export default async function Home() {
           <ImageReveal>
             <TiltCard className="relative aspect-[4/3] w-full overflow-hidden">
               <Image
-                src={pexelsPhoto(3182773, 1000)}
-                alt="Compliance manager on a client call"
+                src={siteImages.homeDarkCtaImage}
+                alt={siteImages.homeDarkCtaImageAlt}
                 fill
                 sizes="(min-width: 1024px) 500px, 90vw"
                 className="object-cover"

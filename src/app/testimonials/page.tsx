@@ -5,7 +5,7 @@ import ImageShowcase from "@/components/decor/ImageShowcase";
 import FadeIn from "@/components/decor/FadeIn";
 import { getSiteSettings } from "@/lib/site-settings-store";
 import { getAllIndustries } from "@/lib/industries-store";
-import { pexelsPhoto } from "@/lib/images";
+import { getSiteImages } from "@/lib/site-images-store";
 import { buildPageMetadata } from "@/lib/page-metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -16,15 +16,19 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function TestimonialsPage() {
-  const [{ testimonials }, industries] = await Promise.all([getSiteSettings(), getAllIndustries()]);
+  const [{ testimonials }, industries, siteImages] = await Promise.all([
+    getSiteSettings(),
+    getAllIndustries(),
+    getSiteImages(),
+  ]);
 
   return (
     <div>
       <PageHero eyebrow="Testimonials" title="What Our Clients Say" />
 
       <ImageShowcase
-        src={pexelsPhoto(36729674, 1600)}
-        alt="Happy clients in a friendly meeting with their advisor"
+        src={siteImages.testimonialsShowcaseImage}
+        alt={siteImages.testimonialsShowcaseImageAlt}
         badge={{ value: "4.9/5", label: "Average Client Rating" }}
       />
 
