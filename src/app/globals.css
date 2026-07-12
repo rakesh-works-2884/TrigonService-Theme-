@@ -349,3 +349,19 @@ button {
 .theme-swiper.on-dark .swiper-pagination-bullet-active {
   background: #fff;
 }
+
+/* 3D coverflow testimonials — dim/blur side slides so the centered one pops */
+.testimonial-swiper .swiper-slide {
+  opacity: 0.45;
+  filter: blur(1.5px) saturate(0.85);
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+.testimonial-swiper .swiper-slide-active {
+  opacity: 1;
+  filter: blur(0) saturate(1);
+}
+
+.testimonial-swiper .swiper-slide-active .icon-orbit::before {
+  animation-duration: 3.5s;
+}
