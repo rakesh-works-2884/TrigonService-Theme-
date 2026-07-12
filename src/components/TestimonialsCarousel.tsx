@@ -17,12 +17,12 @@ export default function TestimonialsCarousel({ testimonials }: { testimonials: T
         effect="coverflow"
         grabCursor
         centeredSlides
-        loop={testimonials.length > 2}
+        rewind={testimonials.length > 1}
         slidesPerView={1.15}
         spaceBetween={24}
         breakpoints={{
-          640: { slidesPerView: 1.4 },
-          1024: { slidesPerView: 2.1 },
+          640: { slidesPerView: 1.3 },
+          1024: { slidesPerView: 1.5 },
         }}
         coverflowEffect={{ rotate: 18, stretch: 0, depth: 80, modifier: 1, slideShadows: false }}
         autoplay={{ delay: 3200, disableOnInteraction: false, pauseOnMouseEnter: true }}
