@@ -5,7 +5,7 @@ import ImageShowcase from "@/components/decor/ImageShowcase";
 import Accordion from "@/components/Accordion";
 import FadeIn from "@/components/decor/FadeIn";
 import { getAllPricingPlans } from "@/lib/pricing-store";
-import { getSiteImages } from "@/lib/site-images-store";
+import { pexelsPhoto } from "@/lib/images";
 import { buildPageMetadata } from "@/lib/page-metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -39,7 +39,7 @@ const pricingFaq = [
 ];
 
 export default async function PricingPage() {
-  const [pricingPlans, siteImages] = await Promise.all([getAllPricingPlans(), getSiteImages()]);
+  const pricingPlans = await getAllPricingPlans();
 
   return (
     <div>
@@ -50,8 +50,8 @@ export default async function PricingPage() {
       />
 
       <ImageShowcase
-        src={siteImages.pricingShowcaseImage}
-        alt={siteImages.pricingShowcaseImageAlt}
+        src={pexelsPhoto(8353807, 1600)}
+        alt="Compliance advisor reviewing a service plan"
         tilt="left"
         badge={{ value: "3", label: "Flexible Plans" }}
       />

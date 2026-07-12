@@ -7,7 +7,7 @@ import TiltCard from "@/components/decor/TiltCard";
 import IconBadge from "@/components/decor/IconBadge";
 import { getSiteSettings } from "@/lib/site-settings-store";
 import { getAllServices } from "@/lib/services-store";
-import { getSiteImages } from "@/lib/site-images-store";
+import { pexelsPhoto } from "@/lib/images";
 import { buildPageMetadata } from "@/lib/page-metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,11 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ContactPage() {
-  const [{ siteConfig }, services, siteImages] = await Promise.all([
-    getSiteSettings(),
-    getAllServices(),
-    getSiteImages(),
-  ]);
+  const [{ siteConfig }, services] = await Promise.all([getSiteSettings(), getAllServices()]);
 
   return (
     <div>
@@ -37,8 +33,8 @@ export default async function ContactPage() {
           <FadeIn delay={100} className="space-y-6 lg:col-span-2">
             <TiltCard className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-md">
               <Image
-                src={siteImages.contactSidebarImage}
-                alt={siteImages.contactSidebarImageAlt}
+                src={pexelsPhoto(8297445, 800)}
+                alt="Trigon Services team reviewing compliance documents together"
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"

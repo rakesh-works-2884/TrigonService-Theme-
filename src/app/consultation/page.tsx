@@ -4,7 +4,7 @@ import ContactForm from "@/components/ContactForm";
 import ImageShowcase from "@/components/decor/ImageShowcase";
 import { getSiteSettings } from "@/lib/site-settings-store";
 import { getAllServices } from "@/lib/services-store";
-import { getSiteImages } from "@/lib/site-images-store";
+import { pexelsPhoto } from "@/lib/images";
 import { buildPageMetadata } from "@/lib/page-metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -15,11 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ConsultationPage() {
-  const [{ siteConfig }, services, siteImages] = await Promise.all([
-    getSiteSettings(),
-    getAllServices(),
-    getSiteImages(),
-  ]);
+  const [{ siteConfig }, services] = await Promise.all([getSiteSettings(), getAllServices()]);
 
   return (
     <div>
@@ -30,8 +26,8 @@ export default async function ConsultationPage() {
       />
 
       <ImageShowcase
-        src={siteImages.consultationShowcaseImage}
-        alt={siteImages.consultationShowcaseImageAlt}
+        src={pexelsPhoto(6953779, 1600)}
+        alt="Compliance expert discussing business needs with a client"
         tilt="left"
         badge={{ value: "24 hrs", label: "Average Response Time" }}
       />

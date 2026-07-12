@@ -3,7 +3,7 @@ import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import ConsultationButton from "@/components/ConsultationButton";
 import { getSiteSettings } from "@/lib/site-settings-store";
-import { getSiteImages } from "@/lib/site-images-store";
+import { pexelsPhoto } from "@/lib/images";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import TeamIcon from "@/components/TeamIcon";
 import ImageReveal from "@/components/decor/ImageReveal";
@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AboutPage() {
-  const [{ coreValues, team }, siteImages] = await Promise.all([getSiteSettings(), getSiteImages()]);
+  const { coreValues, team } = await getSiteSettings();
 
   return (
     <div>
@@ -35,8 +35,8 @@ export default async function AboutPage() {
             <div className="absolute -left-6 -top-6 h-full w-full rounded-sm bg-light" />
             <TiltCard className="relative aspect-[4/5] w-full overflow-hidden rounded-sm shadow-xl">
               <Image
-                src={siteImages.aboutMainImage}
-                alt={siteImages.aboutMainImageAlt}
+                src={pexelsPhoto(8124232, 1000)}
+                alt="Trigon Services compliance team holding client documents"
                 fill
                 sizes="(min-width: 1024px) 400px, 80vw"
                 className="object-cover"
@@ -44,8 +44,8 @@ export default async function AboutPage() {
             </TiltCard>
             <TiltCard className="absolute -bottom-8 -right-6 z-10 h-32 w-44 overflow-hidden rounded-sm shadow-xl ring-4 ring-white sm:h-36 sm:w-52" intensity={8}>
               <Image
-                src={siteImages.aboutInsetImage}
-                alt={siteImages.aboutInsetImageAlt}
+                src={pexelsPhoto(33175650, 500)}
+                alt="Business handshake sealing a partnership"
                 fill
                 sizes="200px"
                 className="object-cover"

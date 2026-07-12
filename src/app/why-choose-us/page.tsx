@@ -6,7 +6,7 @@ import WhyChooseIcon from "@/components/WhyChooseIcon";
 import FadeIn from "@/components/decor/FadeIn";
 import IconBadge from "@/components/decor/IconBadge";
 import { getSiteSettings } from "@/lib/site-settings-store";
-import { getSiteImages } from "@/lib/site-images-store";
+import { pexelsPhoto } from "@/lib/images";
 import { buildPageMetadata } from "@/lib/page-metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function WhyChooseUsPage() {
-  const [{ whyChooseUs, processSteps }, siteImages] = await Promise.all([getSiteSettings(), getSiteImages()]);
+  const { whyChooseUs, processSteps } = await getSiteSettings();
 
   return (
     <div>
@@ -29,8 +29,8 @@ export default async function WhyChooseUsPage() {
       />
 
       <ImageShowcase
-        src={siteImages.whyChooseUsShowcaseImage}
-        alt={siteImages.whyChooseUsShowcaseImageAlt}
+        src={pexelsPhoto(7644014, 1600)}
+        alt="Team member presenting during a work meeting"
         badge={{ value: "500+", label: "Businesses Supported" }}
       />
 
