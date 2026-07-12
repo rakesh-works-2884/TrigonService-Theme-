@@ -32,13 +32,13 @@ const slides = [
   },
   {
     photo: "/hero/bg-revslider-home1-03.jpg",
-    alt: "Business licenses and registration certificates laid out on a desk",
-    subtitle: "Trusted by 500+ Businesses",
-    titleMain: "Licenses",
-    titleSecond: "Certifications",
-    description: "FSSAI, ISO, trademark, and every sector-specific license your business needs to operate legally.",
-    cta: "View Pricing",
-    href: "/pricing",
+    alt: "Certificates of completion laid out on a desk",
+    subtitle: "Build Trust With Every Certificate",
+    titleMain: "Certifications",
+    titleSecond: "Quality Standards",
+    description: "ISO, BIS, CE, and every sector-specific certification that builds trust with your customers and partners.",
+    cta: "Explore Services",
+    href: "/services/certifications",
   },
 ];
 
