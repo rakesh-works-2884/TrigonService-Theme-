@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Autoplay } from "swiper/modules";
@@ -44,8 +44,15 @@ const slides = [
 
 export default function HeroSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [textVisible, setTextVisible] = useState(true);
+  // Start hidden so the very first slide's text slides in on load, just like
+  // it does on every subsequent slide change.
+  const [textVisible, setTextVisible] = useState(false);
   const active = slides[activeIndex];
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setTextVisible(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   return (
     <section className="relative h-[620px] overflow-hidden bg-heading sm:h-[680px] lg:h-[760px]">
