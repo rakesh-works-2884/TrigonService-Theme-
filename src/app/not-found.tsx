@@ -9,7 +9,7 @@ export default function NotFound() {
         The page you&apos;re looking for doesn&apos;t exist or may have moved.
       </p>
       <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-        <Link href="/" className="btn-brand bg-white !text-primary hover:bg-warmgray">
+        <Link href="/" className="btn-brand bg-white !text-primary hover:bg-white/90">
           Back to Home
         </Link>
         <Link href="/services" className="btn-brand-outline">

@@ -195,7 +195,7 @@ export default async function Home() {
                 <span className="text-sm text-white/90">Pan-India support with a dedicated compliance manager</span>
               </li>
             </ul>
-            <ConsultationButton className="btn-brand mt-8 bg-white !text-primary hover:bg-warmgray" />
+            <ConsultationButton className="btn-brand mt-8 bg-white !text-primary hover:bg-white/90" />
           </div>
         </div>
       </section>
@@ -311,7 +311,7 @@ export default async function Home() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group overflow-hidden bg-white shadow-sm transition hover:shadow-lg"
+                className="group overflow-hidden bg-white shadow-sm transition hover:-translate-y-1"
               >
                 <TiltCard className="relative h-40 w-full overflow-hidden" intensity={8}>
                   {post.image ? (
@@ -347,7 +347,7 @@ export default async function Home() {
             Talk to our compliance experts today and find out exactly what your business needs.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row">
-            <ConsultationButton className="btn-brand bg-white !text-primary hover:bg-warmgray" />
+            <ConsultationButton className="btn-brand bg-white !text-primary hover:bg-white/90" />
             <a href={`tel:${siteConfig.phoneHref}`} className="btn-brand-outline">
               Call {siteConfig.phone}
             </a>

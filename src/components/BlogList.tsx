@@ -55,7 +55,7 @@ export default function BlogList({ posts, categories }: { posts: BlogPost[]; cat
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+            className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1"
           >
             <TiltCard className="relative h-40 w-full overflow-hidden" intensity={8}>
               {post.image ? (

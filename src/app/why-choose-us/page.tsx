@@ -74,7 +74,7 @@ export default async function WhyChooseUsPage() {
       <section className="bg-primary py-16 text-white">
         <FadeIn className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Experience the Trigon difference</h2>
-          <ConsultationButton className="btn-brand bg-white !text-primary hover:bg-warmgray" />
+          <ConsultationButton className="btn-brand bg-white !text-primary hover:bg-white/90" />
         </FadeIn>
       </section>
     </div>

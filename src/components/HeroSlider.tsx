@@ -53,7 +53,7 @@ export default function HeroSlider() {
         modules={[Autoplay]}
         loop
         speed={800}
-        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        autoplay={{ delay: 4500, disableOnInteraction: false }}
         onSlideChangeTransitionStart={() => setTextVisible(false)}
         onSlideChangeTransitionEnd={(swiper) => {
           setActiveIndex(swiper.realIndex);
@@ -72,20 +72,47 @@ export default function HeroSlider() {
 
       <div className="pointer-events-none absolute inset-0 z-20 flex items-center">
         <div className="pointer-events-auto mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div
-            className="max-w-xl transition-opacity duration-400 ease-out"
-            style={{ opacity: textVisible ? 1 : 0 }}
-          >
-            <span className="inline-block rounded-full bg-slate-600/70 px-4 py-1.5 text-xs font-semibold tracking-wide text-white shadow-sm backdrop-blur-sm">
+          <div className="max-w-xl">
+            <span
+              className="inline-block rounded-full bg-slate-600/70 px-4 py-1.5 text-xs font-semibold tracking-wide text-white shadow-sm backdrop-blur-sm transition-all duration-700 ease-out"
+              style={{
+                opacity: textVisible ? 1 : 0,
+                transform: textVisible ? "translateX(0)" : "translateX(-48px)",
+                transitionDelay: textVisible ? "0ms" : "0ms",
+              }}
+            >
               {active.subtitle}
             </span>
-            <h1 className="mt-5 text-4xl font-extrabold leading-[1.15] text-white drop-shadow-md sm:text-5xl">
+            <h1
+              className="mt-5 text-4xl font-extrabold leading-[1.15] text-white drop-shadow-md transition-all duration-700 ease-out sm:text-5xl"
+              style={{
+                opacity: textVisible ? 1 : 0,
+                transform: textVisible ? "translateX(0)" : "translateX(-48px)",
+                transitionDelay: textVisible ? "160ms" : "0ms",
+              }}
+            >
               {active.titleMain} <span className="text-secondary">&amp;</span>
               <br />
               {active.titleSecond}
             </h1>
-            <p className="mt-5 max-w-md text-white/85">{active.description}</p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <p
+              className="mt-5 max-w-md text-white/85 transition-all duration-700 ease-out"
+              style={{
+                opacity: textVisible ? 1 : 0,
+                transform: textVisible ? "translateX(0)" : "translateX(-48px)",
+                transitionDelay: textVisible ? "320ms" : "0ms",
+              }}
+            >
+              {active.description}
+            </p>
+            <div
+              className="mt-8 flex flex-col gap-4 transition-all duration-700 ease-out sm:flex-row"
+              style={{
+                opacity: textVisible ? 1 : 0,
+                transform: textVisible ? "translateX(0)" : "translateX(-48px)",
+                transitionDelay: textVisible ? "480ms" : "0ms",
+              }}
+            >
               <Link href={active.href} className="btn-brand bg-white !text-primary hover:bg-white/90">
                 {active.cta}
               </Link>

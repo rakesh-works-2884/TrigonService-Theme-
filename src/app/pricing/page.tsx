@@ -84,7 +84,7 @@ export default async function PricingPage() {
                 </ul>
                 <ConsultationButton
                   className={`btn-brand mt-8 w-full text-center uppercase ${
-                    plan.highlighted ? "" : "!bg-transparent !text-primary border border-primary hover:!bg-warmgray"
+                    plan.highlighted ? "" : "!bg-transparent !text-primary border border-primary hover:!bg-primary/5"
                   }`}
                 >
                   Get Started

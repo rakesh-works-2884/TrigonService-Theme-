@@ -35,7 +35,7 @@ export default function AdminHeader() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-warmgray"
+              className="rounded-full px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-accent-light/40"
             >
               {link.label}
             </Link>
@@ -43,7 +43,7 @@ export default function AdminHeader() {
           <button
             onClick={handleLogout}
             disabled={loggingOut}
-            className="rounded-full px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-warmgray disabled:opacity-60"
+            className="rounded-full px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-accent-light/40 disabled:opacity-60"
           >
             {loggingOut ? "..." : "Logout"}
           </button>

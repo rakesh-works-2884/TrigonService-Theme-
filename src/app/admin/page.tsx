@@ -59,7 +59,7 @@ export default async function AdminDashboardPage() {
                         <Link
                           href={`/blog/${post.slug}`}
                           target="_blank"
-                          className="rounded-full px-3 py-1.5 text-xs font-semibold text-slate-500 hover:bg-warmgray"
+                          className="rounded-full px-3 py-1.5 text-xs font-semibold text-slate-500 hover:bg-accent-light/40"
                         >
                           View
                         </Link>

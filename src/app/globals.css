@@ -125,7 +125,7 @@ button {
 
 .hover-tilt:hover {
   transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 24px 48px -20px rgba(0, 113, 181, 0.3);
+  box-shadow: 0 10px 22px -16px rgba(15, 31, 46, 0.22);
 }
 
 /* 3D tilt for photo/image containers site-wide, with a glossy light sweep on hover */
@@ -174,7 +174,7 @@ button {
 }
 
 .tilt-card:hover {
-  box-shadow: 0 44px 80px -22px rgba(0, 113, 181, 0.5), 0 18px 36px -18px rgba(15, 31, 46, 0.4);
+  box-shadow: 0 10px 22px -16px rgba(15, 31, 46, 0.28);
 }
 
 .tilt-glare {
@@ -193,28 +193,8 @@ button {
   opacity: 1;
 }
 
-/* Rotating conic-gradient halo behind icon badges — a slow ambient spin at rest,
-   brightening on hover. Applied via IconBadge's `orbit` prop. */
-@keyframes spin-slow {
-  to { transform: rotate(360deg); }
-}
-
-.icon-orbit::before {
-  content: "";
-  position: absolute;
-  inset: -7px;
-  z-index: -1;
-  border-radius: inherit;
-  background: conic-gradient(from 0deg, var(--color-primary), var(--color-accent), var(--color-secondary), var(--color-primary));
-  opacity: 0.4;
-  filter: blur(7px);
-  animation: spin-slow 7s linear infinite;
-}
-
-.group:hover .icon-orbit::before {
-  opacity: 0.85;
-  filter: blur(9px);
-}
+/* Icon badges (`orbit` prop) — no glow/blur; hover handled by the badge's own
+   simple lift + icon scale in IconBadge. */
 
 /* Animated gradient text, used for hero/heading accents */
 @keyframes gradient-pan {
@@ -245,7 +225,7 @@ button {
   width: 0;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  background: rgba(255, 255, 255, 0.9);
   transform: translateX(-50%);
   transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }

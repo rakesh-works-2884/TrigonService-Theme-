@@ -44,7 +44,7 @@ export default async function ContactPage() {
             <div className="divide-y divide-slate-100 overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="group flex items-center gap-4 p-5 transition-colors duration-200 hover:bg-warmgray"
+                className="group flex items-center gap-4 p-5 transition-colors duration-200 hover:bg-accent-light/40"
               >
                 <IconBadge tone="soft" orbit>
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -57,7 +57,7 @@ export default async function ContactPage() {
                 </span>
               </a>
 
-              <div className="group flex items-start gap-4 p-5 transition-colors duration-200 hover:bg-warmgray">
+              <div className="group flex items-start gap-4 p-5 transition-colors duration-200 hover:bg-accent-light/40">
                 <IconBadge tone="soft" orbit>
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-1.97.985a11.042 11.042 0 005.516 5.516l.985-1.97a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -83,7 +83,7 @@ export default async function ContactPage() {
                 </span>
               </div>
 
-              <div className="group flex items-start gap-4 p-5 transition-colors duration-200 hover:bg-warmgray">
+              <div className="group flex items-start gap-4 p-5 transition-colors duration-200 hover:bg-accent-light/40">
                 <IconBadge tone="soft" orbit>
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />

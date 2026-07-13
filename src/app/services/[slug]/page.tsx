@@ -83,7 +83,7 @@ export default async function ServicePillarPage({ params }: { params: Promise<{ 
               <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {service.subServices.map((sub, idx) => (
                   <FadeIn key={sub} delay={idx * 60}>
-                    <div className="group relative flex items-start gap-4 overflow-hidden rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl">
+                    <div className="group relative flex items-start gap-4 overflow-hidden rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1">
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-accent/[0.06] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                       <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-white shadow-md transition-transform duration-300 group-hover:scale-110">
                         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -139,7 +139,7 @@ export default async function ServicePillarPage({ params }: { params: Promise<{ 
             <div className="bg-primary p-6 text-white shadow-sm">
               <h3 className="text-base font-semibold">Need help with {service.shortTitle}?</h3>
               <p className="mt-2 text-sm text-slate-200">Talk to our experts and get a clear scope and quote.</p>
-              <ConsultationButton className="btn-brand mt-5 w-full bg-white !text-primary hover:bg-warmgray" />
+              <ConsultationButton className="btn-brand mt-5 w-full bg-white !text-primary hover:bg-white/90" />
             </div>
           </FadeIn>
         </div>
@@ -152,7 +152,7 @@ export default async function ServicePillarPage({ params }: { params: Promise<{ 
                 <Link
                   key={r.slug}
                   href={`/services/${r.slug}`}
-                  className="hover-tilt group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:border-accent/40 hover:shadow-xl"
+                  className="hover-tilt group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1"
                 >
                   <TiltCard className="relative h-24 w-full overflow-hidden" intensity={8}>
                     <Image

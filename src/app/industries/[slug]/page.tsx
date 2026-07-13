@@ -69,7 +69,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}
-                className="hover-tilt rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-accent/40 hover:shadow-xl"
+                className="hover-tilt rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:-translate-y-1"
               >
                 <h3 className="text-sm font-semibold text-heading">{s.title}</h3>
                 <p className="mt-2 text-xs text-slate-500">{s.summary}</p>
@@ -117,7 +117,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         <FadeIn delay={150}>
           <div className="mt-16 bg-primary p-8 text-center text-white sm:p-10">
             <h3 className="text-xl font-bold">Let&apos;s discuss what {industry.title.toLowerCase()} businesses need</h3>
-            <ConsultationButton className="btn-brand mt-6 bg-white !text-primary hover:bg-warmgray" />
+            <ConsultationButton className="btn-brand mt-6 bg-white !text-primary hover:bg-white/90" />
           </div>
         </FadeIn>
       </section>

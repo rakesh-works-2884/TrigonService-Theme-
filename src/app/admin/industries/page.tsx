@@ -53,7 +53,7 @@ export default async function AdminIndustriesPage() {
                         <Link
                           href={`/industries/${industry.slug}`}
                           target="_blank"
-                          className="rounded-full px-3 py-1.5 text-xs font-semibold text-slate-500 hover:bg-warmgray"
+                          className="rounded-full px-3 py-1.5 text-xs font-semibold text-slate-500 hover:bg-accent-light/40"
                         >
                           View
                         </Link>

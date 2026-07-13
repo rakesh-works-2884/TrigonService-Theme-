@@ -31,7 +31,7 @@ export default async function IndustriesPage() {
             <Link
               key={i.slug}
               href={`/industries/${i.slug}`}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1"
             >
               <TiltCard className="relative h-36 w-full overflow-hidden" intensity={8}>
                 <Image

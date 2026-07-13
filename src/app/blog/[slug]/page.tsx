@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <div className="mt-14 bg-primary p-8 text-center text-white">
         <h3 className="text-lg font-bold">Need help with this?</h3>
         <p className="mt-2 text-sm text-slate-200">Talk to our compliance team for guidance specific to your business.</p>
-        <ConsultationButton className="btn-brand mt-5 bg-white !text-primary hover:bg-warmgray" />
+        <ConsultationButton className="btn-brand mt-5 bg-white !text-primary hover:bg-white/90" />
       </div>
     </article>
   );

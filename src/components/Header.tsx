@@ -112,16 +112,16 @@ export default function Header({ siteConfig, services }: { siteConfig: SiteConfi
             </span>
           </Link>
 
-          <nav className="hidden items-center lg:flex">
-            <Link href="/" className={`nav-link rounded-full px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:text-primary ${pathname === "/" ? "active text-primary" : ""}`}>
+          <nav className="hidden items-center rounded-full bg-primary-light px-1.5 py-1 shadow-sm shadow-primary/15 ring-1 ring-primary/10 lg:flex">
+            <Link href="/" className={`nav-link rounded-full px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-white hover:text-primary ${pathname === "/" ? "active bg-white !text-primary shadow-sm" : ""}`}>
               Home
             </Link>
 
             <div className="relative" onMouseEnter={openMenu} onMouseLeave={scheduleClose}>
               <Link
                 href="/services"
-                className={`nav-link flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:text-primary ${
-                  servicesOpen || pathname.startsWith("/services") ? "active text-primary" : ""
+                className={`nav-link flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-white hover:text-primary ${
+                  servicesOpen || pathname.startsWith("/services") ? "active bg-white !text-primary shadow-sm" : ""
                 }`}
               >
                 Services
@@ -181,7 +181,7 @@ export default function Header({ siteConfig, services }: { siteConfig: SiteConfi
                         <Link
                           key={s.slug}
                           href={`/services/${s.slug}`}
-                          className="group flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors duration-200 hover:bg-warmgray"
+                          className="group flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors duration-200 hover:bg-accent-light/40"
                         >
                           <IconBadge tone="soft" size="sm">
                             <ServiceIcon slug={s.slug} className="h-5 w-5" />
@@ -202,8 +202,8 @@ export default function Header({ siteConfig, services }: { siteConfig: SiteConfi
               <Link
                 key={link.href}
                 href={link.href}
-                className={`nav-link rounded-full px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:text-primary ${
-                  pathname === link.href ? "active text-primary" : ""
+                className={`nav-link rounded-full px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-white hover:text-primary ${
+                  pathname === link.href ? "active bg-white !text-primary shadow-sm" : ""
                 }`}
               >
                 {link.label}
@@ -260,13 +260,13 @@ export default function Header({ siteConfig, services }: { siteConfig: SiteConfi
         }`}
       >
         <div className="px-4 py-4">
-          <Link href="/" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-warmgray">
+          <Link href="/" className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-accent-light/40">
             Home
           </Link>
           <button
             type="button"
             onClick={() => setMobileServicesOpen((v) => !v)}
-            className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-warmgray"
+            className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-accent-light/40"
           >
             Services
             <svg
@@ -286,7 +286,7 @@ export default function Header({ siteConfig, services }: { siteConfig: SiteConfi
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}
-                className="group flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-slate-500 hover:bg-warmgray"
+                className="group flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-slate-500 hover:bg-accent-light/40"
               >
                 <IconBadge tone="soft" size="xs">
                   <ServiceIcon slug={s.slug} className="h-3.5 w-3.5" />
@@ -299,7 +299,7 @@ export default function Header({ siteConfig, services }: { siteConfig: SiteConfi
             <Link
               key={link.href}
               href={link.href}
-              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-warmgray"
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-accent-light/40"
             >
               {link.label}
             </Link>
