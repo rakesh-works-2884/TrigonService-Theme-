@@ -32,7 +32,7 @@ const slides = [
   },
   {
     photo: "/hero/bg-revslider-home1-03.jpg",
-    alt: "Certificates of completion laid out on a desk",
+    alt: "Business licenses and registration certificates laid out on a desk",
     subtitle: "Build Trust With Every Certificate",
     titleMain: "Certifications",
     titleSecond: "Quality Standards",
